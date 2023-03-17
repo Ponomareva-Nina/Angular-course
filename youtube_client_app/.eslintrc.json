@@ -41,7 +41,8 @@
         "prettier/prettier": ["error"],
         "@typescript-eslint/explicit-member-accessibility": ["warn"],
         "@typescript-eslint/explicit-function-return-type": ["warn"],
-        "import/prefer-default-export": ["off"]
+        "import/prefer-default-export": ["off"],
+        "@typescript-eslint/lines-between-class-members": ["off"]
       }
     },
     {
