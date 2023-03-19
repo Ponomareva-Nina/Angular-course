@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
 import SearchResponseInterface from 'src/app/models/search-response.model';
-import data from '../../mockData/data.json';
-import { SearchItemInterface } from '../../models/search-item.model';
+import data from '../../../../../mockData/data.json';
+import { SearchItemInterface } from '../../../../models/search-item.model';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-search-list',
