@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SearchItemInterface } from '../../../../models/search-item.model';
+import { SearchItemInterface } from '../../../models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -8,4 +8,8 @@ import { SearchItemInterface } from '../../../../models/search-item.model';
 })
 export default class SearchItemComponent {
   @Input() public searchItem!: SearchItemInterface;
+
+  public get title(): string {
+    return this.searchItem.snippet.title;
+  }
 }
