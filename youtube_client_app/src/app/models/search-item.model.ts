@@ -1,7 +1,20 @@
-interface ThumbnailInterface {
+interface ThumbnailItemInterface {
   url: string;
   width: number;
   height: number;
+}
+
+interface ThumbnailsInterface {
+  default: ThumbnailItemInterface;
+  medium: ThumbnailItemInterface;
+  high: ThumbnailItemInterface;
+  standard: ThumbnailItemInterface;
+  maxres: ThumbnailItemInterface;
+}
+
+interface LocalizationInterface {
+  title: string;
+  description: string;
 }
 
 interface SnippetInterface {
@@ -9,21 +22,12 @@ interface SnippetInterface {
   channelId: string;
   title: string;
   description: string;
-  thumbnails: {
-    default: ThumbnailInterface;
-    medium: ThumbnailInterface;
-    high: ThumbnailInterface;
-    standard: ThumbnailInterface;
-    maxres: ThumbnailInterface;
-  };
+  thumbnails: ThumbnailsInterface;
   channelTitle: string;
   tags: Array<string>;
   categoryId: string;
   liveBroadcastContent: string;
-  localized: {
-    title: string;
-    description: string;
-  };
+  localized: LocalizationInterface;
   defaultAudioLanguage: string;
 }
 
