@@ -5,4 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export default class HeaderComponent {}
+export default class HeaderComponent {
+  public isOpenSearchSettings = false;
+
+  public toggleSearchSettings(): void {
+    this.isOpenSearchSettings = !this.isOpenSearchSettings;
+  }
+}

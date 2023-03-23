@@ -8,7 +8,8 @@ import ProfileComponent from './core/header/profile/profile.component';
 import SearchListComponent from './main-page/search/search-list/search-list.component';
 import SearchItemComponent from './main-page/search/search-item/search-item.component';
 import { SearchPanelComponent } from './core/header/search-panel/search-panel.component';
-import { SortPanelComponent } from './core/header/sort-panel/sort-panel.component';
+import { SearchSettingsPanelComponent } from './core/header/search-settings-panel/search-settings-panel.component';
+import { LogoComponent } from './core/header/logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SortPanelComponent } from './core/header/sort-panel/sort-panel.componen
     SearchListComponent,
     SearchItemComponent,
     SearchPanelComponent,
-    SortPanelComponent,
+    SearchSettingsPanelComponent,
+    LogoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

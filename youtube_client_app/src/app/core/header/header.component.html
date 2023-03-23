@@ -1,1 +1,5 @@
-<p>header works!</p>
+<div class="wrapper header">
+  <app-logo></app-logo>
+  <app-search-panel></app-search-panel>
+  <app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>
+</div>

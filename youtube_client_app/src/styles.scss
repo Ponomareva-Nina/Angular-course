@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+html {
+  font-size: $base-size;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.wrapper {
+  max-width: 1400px;
+}
+.btn {
+  transition: all .3s;
+  background-color: $btn-bg;
+  text-transform: lowercase;
+  color: $font-btn-color;
+
+  &:hover {
+    background-color: $btn-hover-bg;
+    filter: drop-shadow(1px 0px 3px $btn-hover-bg);
+  }
+}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
