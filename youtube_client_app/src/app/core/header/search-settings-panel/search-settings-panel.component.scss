@@ -2,4 +2,23 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.sorting {
+  color: var(--auxiliary-color);
+}
+.filter-input {
+  height: 2rem;
+
+  &:focus {
+    outline: 1px solid var(--auxiliary-color);
+  }
+}
+button {
+  color: var(--link-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -4,27 +4,48 @@
 html {
   font-size: var(--base-size);
 }
-
+body {
+  margin: 0;
+}
+@mixin font-main() {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--font-main-color);
+}
+p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
 * {
   box-sizing: border-box;
 }
-
 button {
   background-color: transparent;
   outline: none;
   border: none;
+  @include font-main();
 
   &:hover {
     cursor: pointer;
   }
 }
+input[type='text'] {
+  outline: none;
+  border: 1px transparent;
+}
 .wrapper {
-  max-width: 1400px;
+  max-width: 1200px;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
 .btn {
   transition: all .3s;
   background-color: var(--btn-bg);
   text-transform: lowercase;
+  color: var(--font-btn-color);
+  @include font-main();
   color: var(--font-btn-color);
 
   &:hover {
@@ -36,7 +57,5 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  color: var(--font-main-color);
+  @include font-main();
 }
