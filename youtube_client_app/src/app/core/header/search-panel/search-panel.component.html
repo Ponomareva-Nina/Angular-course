@@ -1,7 +1,7 @@
 <div class="search-container">
-  <input class="search-input" type="text">
-  <button class="btn search-container__search-btn">Search</button>
-  <button class="settings-btn">
-    <img class="search-container__settings-btn" src="../../../assets/search_settings.svg">
+  <input class="search-input" type="text" [(ngModel)]="searchInputValue">
+  <button class="btn search-container__search-btn" (click)="sendRequest()">Search</button>
+  <button class="settings-btn" (click)="handleClickOnSettingsBtn()">
+    <img class="settings-btn__img" src="../../../assets/search_settings.svg">
   </button>
 </div>

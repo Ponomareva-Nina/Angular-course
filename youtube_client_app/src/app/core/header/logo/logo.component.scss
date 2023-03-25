@@ -4,5 +4,6 @@
   
   &:hover {
     cursor: pointer;
+    filter: var(--hover-shadow);
   }
 }

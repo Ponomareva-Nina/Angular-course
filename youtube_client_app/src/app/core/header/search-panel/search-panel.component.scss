@@ -7,12 +7,17 @@
 .search-container__search-btn {
   height: 100%;
   border-radius: 0 4px 4px 0;
-  background-color: #2F80ED;
+  background-color: var(--btn-hover-bg);
 }
-.search-container__settings-btn {
+.settings-btn {
+  transition: all .3s ease;
   &:hover {
-    filter: drop-shadow(1px 0px 3px #2F80ED);
+    filter: var(--hover-shadow);
   }
+}
+.settings-btn__img {
+  text-align: center;
+  vertical-align: middle;
 }
 .search-input {
   height: 100%;

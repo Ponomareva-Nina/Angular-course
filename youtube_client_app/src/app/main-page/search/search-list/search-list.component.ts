@@ -1,7 +1,5 @@
-import SearchResponseInterface from 'src/app/models/search-response.model';
 import { Component } from '@angular/core';
-import data from '../../../../mockData/data.json';
-import { SearchItemInterface } from '../../../models/search-item.model';
+import { AppSearchService } from '../services/app-search.service';
 
 @Component({
   selector: 'app-search-list',
@@ -9,6 +7,5 @@ import { SearchItemInterface } from '../../../models/search-item.model';
   styleUrls: ['./search-list.component.scss'],
 })
 export default class SearchListComponent {
-  public mockData: SearchResponseInterface = data;
-  public searchResults: SearchItemInterface[] = this.mockData.items;
+  public constructor(protected appSearchService: AppSearchService) {}
 }

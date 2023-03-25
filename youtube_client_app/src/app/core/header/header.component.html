@@ -1,5 +1,7 @@
 <div class="wrapper header">
   <app-logo></app-logo>
-  <app-search-panel></app-search-panel>
-  <app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>
+  <app-search-panel
+    (onSettingsBtnClick)="toggleSearchSettings()"
+  ></app-search-panel>
 </div>
+<app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>
