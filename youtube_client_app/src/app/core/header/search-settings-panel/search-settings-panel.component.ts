@@ -19,21 +19,19 @@ export class SearchSettingsPanelComponent {
   public setSortByDate(): void {
     if (this.currentSort === SortOptions.DATE_ASC) {
       this.currentSort = SortOptions.DATE_DESC;
-      this.searchService.currentSort = SortOptions.DATE_DESC;
     } else {
       this.currentSort = SortOptions.DATE_ASC;
-      this.searchService.currentSort = SortOptions.DATE_ASC;
     }
+    this.searchService.currentSort = this.currentSort;
   }
 
   public setSortByViews(): void {
     if (this.currentSort === SortOptions.VIEWS_ASC) {
       this.currentSort = SortOptions.VIEWS_DESC;
-      this.searchService.currentSort = SortOptions.VIEWS_DESC;
     } else {
       this.currentSort = SortOptions.VIEWS_ASC;
-      this.searchService.currentSort = SortOptions.VIEWS_ASC;
     }
+    this.searchService.currentSort = this.currentSort;
   }
 
   public updateKeyword(e: Event): void {
