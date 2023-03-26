@@ -11,6 +11,7 @@ import { SearchPanelComponent } from './core/header/search-panel/search-panel.co
 import { SearchSettingsPanelComponent } from './core/header/search-settings-panel/search-settings-panel.component';
 import { LogoComponent } from './core/header/logo/logo.component';
 import { SharedModule } from './shared/shared.module';
+import { BorderColorDirective } from './main-page/directives/border-color.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     SearchPanelComponent,
     SearchSettingsPanelComponent,
     LogoComponent,
+    BorderColorDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, SharedModule],
   providers: [],

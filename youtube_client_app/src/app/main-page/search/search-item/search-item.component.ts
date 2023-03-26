@@ -21,6 +21,10 @@ export default class SearchItemComponent {
     return `url(${imgUrl})`;
   }
 
+  public get publishedAt(): string {
+    return this.searchItem.snippet.publishedAt;
+  }
+
   public getSocialsInfo(): StatisticsInterface {
     return this.searchItem.statistics;
   }
