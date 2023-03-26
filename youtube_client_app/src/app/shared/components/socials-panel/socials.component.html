@@ -1,7 +1,7 @@
-<ul сlass="socials-list">
-  <li сlass="social-item" *ngFor="let social of getSocials()">
+<ul ngClass="socials-list">
+  <li ngClass="social-item" *ngFor="let social of getSocials()">
     <img [src]="social.img">
-    <span>{{ social.data }}</span>
+    <span>{{ social.data | socialsCount }}</span>
   </li>
 </ul>
 

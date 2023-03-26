@@ -17,7 +17,7 @@ export default class SearchItemComponent {
   }
 
   public get smallThumbnailUrl(): string {
-    const imgUrl = this.searchItem.snippet.thumbnails.default.url;
+    const imgUrl = this.searchItem.snippet.thumbnails.standard.url;
     return `url(${imgUrl})`;
   }
 

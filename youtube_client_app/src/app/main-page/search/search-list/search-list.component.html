@@ -1,3 +1,4 @@
-<div *ngIf="apiService.searchListIsVisible">
+<section ngClass="search-result" *ngIf="apiService.searchListIsVisible">
   <app-search-item *ngFor="let item of apiService.getData()" [searchItem]="item"></app-search-item>
-</div>
+</section>
+

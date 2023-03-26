@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { StatisticsInterface } from '../../../models/search-item.model';
-import { SocialInterface } from '../../models/socials.model';
+import { SocialInterface } from './socials.model';
 
 @Component({
   selector: 'app-socials',

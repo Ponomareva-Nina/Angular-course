@@ -9,6 +9,7 @@ import data from '../../../mockData/data.json';
 export class ApiService {
   public mockData: SearchResponseInterface = data;
   public searchListIsVisible = false;
+  public searchData: SearchItemInterface[] = [];
 
   public setSearchListVisible(): void {
     this.searchListIsVisible = true;
