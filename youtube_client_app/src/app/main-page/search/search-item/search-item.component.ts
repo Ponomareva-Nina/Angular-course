@@ -12,4 +12,9 @@ export default class SearchItemComponent {
   public get title(): string {
     return this.searchItem.snippet.title;
   }
+
+  public get smallThumbnailUrl(): string {
+    const imgUrl = this.searchItem.snippet.thumbnails.default.url;
+    return `url(${imgUrl})`;
+  }
 }

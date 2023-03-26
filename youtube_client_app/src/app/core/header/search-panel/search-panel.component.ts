@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { AppSearchService } from 'src/app/main-page/search/services/app-search.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -10,7 +10,7 @@ export class SearchPanelComponent {
   @Output() public onSettingsBtnClick: EventEmitter<void> = new EventEmitter();
   public searchInputValue = '';
 
-  public constructor(protected appSearchService: AppSearchService) {}
+  public constructor(protected apiService: ApiService) {}
 
   public handleClickOnSettingsBtn(): void {
     this.onSettingsBtnClick.emit();
@@ -18,7 +18,7 @@ export class SearchPanelComponent {
 
   public sendRequest(): void {
     if (this.searchInputValue.trim().length) {
-      this.appSearchService.setSearchListVisible();
+      this.apiService.setSearchListVisible();
       this.searchInputValue = '';
     }
   }

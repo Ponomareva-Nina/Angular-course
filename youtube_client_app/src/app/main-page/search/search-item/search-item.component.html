@@ -1,4 +1,7 @@
-<div>
-  <h3>Search-item</h3>
-  <p>{{title}}</p>
+<div class="card">
+  <div class="card__thumbnail" [ngStyle]="{
+    'background-image': smallThumbnailUrl
+  }">
+  </div>
+  <h3 class="card__title">{{title}}</h3>
 </div>

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { SearchItemInterface } from '../../../models/search-item.model';
-import SearchResponseInterface from '../../../models/search-response.model';
-import data from '../../../../mockData/data.json';
+import { SearchItemInterface } from '../../models/search-item.model';
+import SearchResponseInterface from '../../models/search-response.model';
+import data from '../../../mockData/data.json';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AppSearchService {
+export class ApiService {
   public mockData: SearchResponseInterface = data;
   public searchListIsVisible = false;
 
-  public setSearchListVisible() {
+  public setSearchListVisible(): void {
     this.searchListIsVisible = true;
   }
 
