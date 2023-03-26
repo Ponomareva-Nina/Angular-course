@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { SortOptions } from 'src/app/main-page/constants/constants';
+import { SearchService } from 'src/app/main-page/services/search.service';
 
 @Component({
   selector: 'app-search-settings-panel',
@@ -8,8 +10,30 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class SearchSettingsPanelComponent {
   @ViewChild('sortByWordInput')
   public sortByWordInputRef!: ElementRef;
+  public currentSort: SortOptions | null = null;
+  public constructor(protected searchService: SearchService) {}
 
   public focusSortByWordInput(): void {
     this.sortByWordInputRef.nativeElement.focus();
+  }
+
+  public setSortByDate(): void {
+    if (this.currentSort === SortOptions.DATE_ASC) {
+      this.currentSort = SortOptions.DATE_DESC;
+      this.searchService.currentSort = SortOptions.DATE_DESC;
+    } else {
+      this.currentSort = SortOptions.DATE_ASC;
+      this.searchService.currentSort = SortOptions.DATE_ASC;
+    }
+  }
+
+  public setSortByViews(): void {
+    if (this.currentSort === SortOptions.VIEWS_ASC) {
+      this.currentSort = SortOptions.VIEWS_DESC;
+      this.searchService.currentSort = SortOptions.VIEWS_DESC;
+    } else {
+      this.currentSort = SortOptions.VIEWS_ASC;
+      this.searchService.currentSort = SortOptions.VIEWS_ASC;
+    }
   }
 }

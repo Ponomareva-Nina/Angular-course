@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from 'src/app/core/services/api.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-list',
@@ -7,5 +7,5 @@ import { ApiService } from 'src/app/core/services/api.service';
   styleUrls: ['./search-list.component.scss'],
 })
 export default class SearchListComponent {
-  public constructor(protected apiService: ApiService) {}
+  public constructor(protected searchService: SearchService) {}
 }
