@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { SearchItemInterface } from '../../../models/search-item.model';
+import {
+  SearchItemInterface,
+  StatisticsInterface,
+} from '../../../models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -16,5 +19,9 @@ export default class SearchItemComponent {
   public get smallThumbnailUrl(): string {
     const imgUrl = this.searchItem.snippet.thumbnails.default.url;
     return `url(${imgUrl})`;
+  }
+
+  public getSocialsInfo(): StatisticsInterface {
+    return this.searchItem.statistics;
   }
 }

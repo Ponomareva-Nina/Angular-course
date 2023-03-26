@@ -10,6 +10,7 @@ import SearchItemComponent from './main-page/search/search-item/search-item.comp
 import { SearchPanelComponent } from './core/header/search-panel/search-panel.component';
 import { SearchSettingsPanelComponent } from './core/header/search-settings-panel/search-settings-panel.component';
 import { LogoComponent } from './core/header/logo/logo.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { LogoComponent } from './core/header/logo/logo.component';
     SearchSettingsPanelComponent,
     LogoComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, SharedModule],
   providers: [],
   bootstrap: [AppComponent],
 })

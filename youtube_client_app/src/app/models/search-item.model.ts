@@ -31,7 +31,7 @@ interface SnippetInterface {
   defaultAudioLanguage: string;
 }
 
-interface StatisticsInterface {
+export interface StatisticsInterface {
   viewCount: string;
   likeCount: string;
   dislikeCount: string;
