@@ -3,6 +3,6 @@
   <button (click)="setSortByDate()">date</button>
   <button (click)="setSortByViews()">count of views</button>
   <button (click)="focusSortByWordInput()">by word or sentance</button>
-  <input type="text" class="filter-input" #sortByWordInput>
+  <input type="text" class="filter-input" #sortByWordInput (input)="updateKeyword($event)">
 </div>
 

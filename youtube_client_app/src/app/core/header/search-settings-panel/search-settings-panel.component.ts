@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { SortOptions } from 'src/app/main-page/constants/constants';
 import { SearchService } from 'src/app/main-page/services/search.service';
+import { SortOptions } from 'src/constants/sort-options';
 
 @Component({
   selector: 'app-search-settings-panel',
@@ -8,8 +8,7 @@ import { SearchService } from 'src/app/main-page/services/search.service';
   styleUrls: ['./search-settings-panel.component.scss'],
 })
 export class SearchSettingsPanelComponent {
-  @ViewChild('sortByWordInput')
-  public sortByWordInputRef!: ElementRef;
+  @ViewChild('sortByWordInput') public sortByWordInputRef!: ElementRef;
   public currentSort: SortOptions | null = null;
   public constructor(protected searchService: SearchService) {}
 
@@ -35,5 +34,10 @@ export class SearchSettingsPanelComponent {
       this.currentSort = SortOptions.VIEWS_ASC;
       this.searchService.currentSort = SortOptions.VIEWS_ASC;
     }
+  }
+
+  public updateKeyword(e: Event): void {
+    const input = e.target as HTMLInputElement;
+    this.searchService.updateKeywordFilter(input.value);
   }
 }

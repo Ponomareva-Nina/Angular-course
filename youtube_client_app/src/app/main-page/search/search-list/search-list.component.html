@@ -1,4 +1,8 @@
 <section ngClass="search-result" *ngIf="searchService.currentSearchResults.length">
-  <app-search-item *ngFor="let item of searchService.getCurrentSearchItems() | sort:searchService.currentSort" [searchItem]="item"></app-search-item>
+  <app-search-item 
+  *ngFor="let item of searchService.getCurrentSearchItems() 
+  | sort:searchService.currentSort
+  | filter:searchService.currentByKeywordFilter"
+  [searchItem]="item"></app-search-item>
 </section>
 

@@ -13,6 +13,7 @@ import { LogoComponent } from './core/header/logo/logo.component';
 import { SharedModule } from './shared/shared.module';
 import { BorderColorDirective } from './main-page/directives/border-color.directive';
 import { SortPipe } from './main-page/pipes/sort.pipe';
+import { FilterPipe } from './main-page/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SortPipe } from './main-page/pipes/sort.pipe';
     LogoComponent,
     BorderColorDirective,
     SortPipe,
+    FilterPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, SharedModule],
   providers: [],
