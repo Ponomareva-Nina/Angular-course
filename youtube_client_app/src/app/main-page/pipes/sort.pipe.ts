@@ -11,32 +11,32 @@ export class SortPipe implements PipeTransform {
     items: SearchItemInterface[],
     currentSort: SortOptions
   ): SearchItemInterface[] {
-    if (currentSort === SortOptions.DATE_ASC) {
-      return items.sort(
-        (prev, next) =>
-          new Date(next.snippet.publishedAt).getTime() -
-          new Date(prev.snippet.publishedAt).getTime()
-      );
+    switch (currentSort) {
+      case SortOptions.DATE_ASC:
+        return this.sortByDate(items);
+      case SortOptions.DATE_DESC:
+        return this.sortByDate(items).reverse();
+      case SortOptions.VIEWS_ASC:
+        return this.sortByViews(items);
+      case SortOptions.VIEWS_DESC:
+        return this.sortByViews(items).reverse();
+      default:
+        return items;
     }
-    if (currentSort === SortOptions.DATE_DESC) {
-      return items.sort(
-        (prev, next) =>
-          new Date(prev.snippet.publishedAt).getTime() -
-          new Date(next.snippet.publishedAt).getTime()
-      );
-    }
-    if (currentSort === SortOptions.VIEWS_ASC) {
-      return items.sort(
-        (prev, next) =>
-          Number(next.statistics.viewCount) - Number(prev.statistics.viewCount)
-      );
-    }
-    if (currentSort === SortOptions.VIEWS_DESC) {
-      return items.sort(
-        (prev, next) =>
-          Number(prev.statistics.viewCount) - Number(next.statistics.viewCount)
-      );
-    }
-    return items;
+  }
+
+  private sortByDate(items: SearchItemInterface[]): SearchItemInterface[] {
+    return items.sort(
+      (prev, next) =>
+        new Date(next.snippet.publishedAt).getTime() -
+        new Date(prev.snippet.publishedAt).getTime()
+    );
+  }
+
+  private sortByViews(items: SearchItemInterface[]): SearchItemInterface[] {
+    return items.sort(
+      (prev, next) =>
+        Number(next.statistics.viewCount) - Number(prev.statistics.viewCount)
+    );
   }
 }
