@@ -13,19 +13,19 @@ export class SocialsComponent {
   public getSocials(): SocialInterface[] {
     return [
       {
-        img: '../../../assets/viewed.svg',
+        img: './assets/viewed.svg',
         data: this.socialsData.viewCount,
       },
       {
-        img: '../../../assets/liked.svg',
+        img: './assets/liked.svg',
         data: this.socialsData.likeCount,
       },
       {
-        img: '../../../assets/dislike.svg',
+        img: './assets/dislike.svg',
         data: this.socialsData.dislikeCount,
       },
       {
-        img: '../../../assets/comments.svg',
+        img: './assets/comments.svg',
         data: this.socialsData.commentCount,
       },
     ];

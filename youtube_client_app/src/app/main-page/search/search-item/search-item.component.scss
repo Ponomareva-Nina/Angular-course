@@ -11,6 +11,7 @@
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
   position: relative;
 }
+
 .card__thumbnail {
   height: 10rem;
   width: 100%;
@@ -18,6 +19,7 @@
   background-position: center;
   background-size: cover;
 }
+
 .card__title {
   font-size: 2rem;
   color: var(--card-title-color);
@@ -28,6 +30,7 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
 .card__btn {
   width: 12rem;
   height: 3.2rem;
@@ -39,6 +42,7 @@
   margin-right: auto;
   border-radius: .5rem;
 }
+
 .border-panel {
   position: absolute;
   bottom: 0;
