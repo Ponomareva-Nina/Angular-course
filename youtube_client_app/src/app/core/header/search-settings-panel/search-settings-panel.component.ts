@@ -36,6 +36,6 @@ export class SearchSettingsPanelComponent {
 
   public updateKeyword(e: Event): void {
     const input = e.target as HTMLInputElement;
-    this.searchService.updateKeywordFilter(input.value);
+    this.searchService.currentFilter = input.value;
   }
 }

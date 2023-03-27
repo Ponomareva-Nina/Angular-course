@@ -8,18 +8,31 @@ import { SearchItemInterface } from '../../models/search-item.model';
 })
 export class SearchService {
   public constructor(protected apiService: ApiService) {}
-  public currentSearchResults: SearchItemInterface[] = [];
-  public currentSort: SortOptions = SortOptions.VIEWS_DESC;
-  public currentByKeywordFilter = '';
+  private currentSearchResults: SearchItemInterface[] = [];
+  private currentSortOption: SortOptions = SortOptions.VIEWS_DESC;
+  private currentByKeywordFilter = '';
 
   public updateSearchResult(): void {
     this.currentSearchResults = this.apiService.getCurrentSearchResult();
   }
 
-  public getCurrentSearchItems(): SearchItemInterface[] {
+  public get CurrentSearchItems(): SearchItemInterface[] {
     return this.currentSearchResults;
   }
-  public updateKeywordFilter(value: string): void {
+
+  public get currentFilter(): string {
+    return this.currentByKeywordFilter;
+  }
+
+  public set currentFilter(value: string) {
     this.currentByKeywordFilter = value;
+  }
+
+  public get currentSort(): SortOptions {
+    return this.currentSortOption;
+  }
+
+  public set currentSort(value: SortOptions) {
+    this.currentSortOption = value;
   }
 }
