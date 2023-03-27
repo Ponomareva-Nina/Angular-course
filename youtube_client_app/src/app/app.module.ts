@@ -4,7 +4,8 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import AuthModule from './auth/auth.module';
 import CoreModule from './core/core.module';
-import MainPageModule from './main-page/main-page.module';
+import { MainPageModule } from './main-page/main-page.module';
+import { Page404Module } from './page404/page404.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,8 +15,8 @@ import MainPageModule from './main-page/main-page.module';
     AuthModule,
     CoreModule,
     MainPageModule,
+    Page404Module,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}
