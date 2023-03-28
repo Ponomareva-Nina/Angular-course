@@ -2,26 +2,26 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { BorderColorDirective } from './directives/border-color.directive';
-import { MainPageRoutingModule } from './main-page.routing-module';
-import { MainPageComponent } from './pages/main-page.component';
+import { YoutubeRoutingModule } from './youtube.routing-module';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
-import SearchItemComponent from './search/search-item/search-item.component';
-import SearchListComponent from './search/search-list/search-list.component';
+import SearchItemComponent from './components/search-results/search-item/search-item.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import SearchResultsComponent from './components/search-results/search-results.component';
 
 @NgModule({
   declarations: [
-    SearchListComponent,
+    SearchResultsComponent,
     SearchItemComponent,
     BorderColorDirective,
     SortPipe,
     FilterPipe,
     MainPageComponent,
   ],
-  imports: [CommonModule, SharedModule, MainPageRoutingModule],
+  imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   providers: [],
   exports: [
-    SearchListComponent,
+    SearchResultsComponent,
     SearchItemComponent,
     BorderColorDirective,
     SortPipe,
@@ -29,4 +29,4 @@ import SearchListComponent from './search/search-list/search-list.component';
     MainPageComponent,
   ],
 })
-export class MainPageModule {}
+export class YoutubeModule {}

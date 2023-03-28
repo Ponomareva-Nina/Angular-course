@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 import { SortOptions } from 'src/constants/sort-options';
-import { SearchItemInterface } from '../../models/search-item.model';
+import { SearchItemInterface } from '../models/search-item.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { StatisticsInterface } from '../../../models/search-item.model';
+import { StatisticsInterface } from '../../../core/models/search-item.model';
 import { SocialInterface } from './socials.model';
 
 @Component({

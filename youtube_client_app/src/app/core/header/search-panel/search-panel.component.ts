@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
-import { SearchService } from '../../../main-page/services/search.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-panel',

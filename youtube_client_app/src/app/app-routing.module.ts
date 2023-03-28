@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: MAIN_PAGE_ROUTE,
     loadChildren: () =>
-      import('./main-page/main-page.module').then((m) => m.MainPageModule),
+      import('./youtube/youtube.module').then((m) => m.YoutubeModule),
   },
   {
     path: '',

@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItemInterface } from 'src/app/models/search-item.model';
+import { SearchItemInterface } from 'src/app/core/models/search-item.model';
 import { SortOptions } from 'src/constants/sort-options';
 
 @Pipe({
