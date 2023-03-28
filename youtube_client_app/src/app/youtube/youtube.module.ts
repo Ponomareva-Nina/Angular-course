@@ -8,6 +8,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import SearchItemComponent from './components/search-results/search-item/search-item.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import SearchResultsComponent from './components/search-results/search-results.component';
+import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 
 @NgModule({
   declarations: [
@@ -17,16 +18,10 @@ import SearchResultsComponent from './components/search-results/search-results.c
     SortPipe,
     FilterPipe,
     MainPageComponent,
+    DetailedPageComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   providers: [],
-  exports: [
-    SearchResultsComponent,
-    SearchItemComponent,
-    BorderColorDirective,
-    SortPipe,
-    FilterPipe,
-    MainPageComponent,
-  ],
+  exports: [MainPageComponent, DetailedPageComponent],
 })
 export class YoutubeModule {}

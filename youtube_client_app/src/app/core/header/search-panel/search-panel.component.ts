@@ -24,7 +24,6 @@ export class SearchPanelComponent {
   public handleClickOnSearchBtn(): void {
     if (this.searchInputValue.trim().length) {
       this.searchService.updateSearchResult();
-      this.searchInputValue = '';
     }
     this.router.navigate([MAIN_PAGE_ROUTE]);
   }
