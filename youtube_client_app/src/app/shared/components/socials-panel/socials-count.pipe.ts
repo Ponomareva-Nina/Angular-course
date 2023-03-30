@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { THOUSAND, THOUSAND_DIGITS_NUM } from '../constants/constants';
+import { THOUSAND, THOUSAND_DIGITS_NUM } from './socials-component-constants';
 
 @Pipe({
   name: 'socialsCount',
