@@ -1,4 +1,11 @@
-.search-container__search-btn {
+:host {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.search-btn {
   height: 2.4rem;
   border-radius: 0 4px 4px 0;
   background-color: var(--btn-hover-bg);
@@ -6,6 +13,9 @@
 
 .settings-btn {
   transition: all .3s ease;
+  padding: 0px;
+  margin-left: 1rem;
+  
   &:hover {
     filter: var(--hover-shadow);
   }
@@ -18,11 +28,12 @@
 
 .search-input {
   height: 2.4rem;
-  width: 100%;
   background-color: var(--input-bg-color);
   color: var(--font-main-color);
   outline: none;
   border: none;
+  flex-grow: 1;
+  max-width: 32rem;
 
   &::placeholder {
     color: var(--auxiliary-color);

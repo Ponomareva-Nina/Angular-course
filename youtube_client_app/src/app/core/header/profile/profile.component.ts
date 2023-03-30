@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.scss'],
 })
 export default class ProfileComponent {
-  public name = 'Your name';
+  public constructor(private authService: AuthService) {}
+
+  public name = this.authService.username || 'Your name';
 }

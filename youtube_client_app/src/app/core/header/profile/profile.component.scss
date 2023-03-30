@@ -1,13 +1,17 @@
-.profile-container {
+:host {
   display: flex;
   gap: .8rem;
   align-items: center;
-  width: 100%;
-
-  & .logo {
-    vertical-align: middle;
-    text-align: center;
+  
+  &:hover {
+    cursor: pointer;
   }
+}
+
+.avatar {
+  vertical-align: middle;
+  text-align: center;
+  width: 2.5rem;
 }
 
 .userame {
