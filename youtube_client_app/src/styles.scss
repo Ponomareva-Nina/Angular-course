@@ -79,3 +79,11 @@ input[type='password'] {
   align-items: center;
   @include font-main();
 }
+
+.title {
+  font-size: 1.8rem;
+}
+
+.form-label {
+  color: var(--auxiliary-color);
+}

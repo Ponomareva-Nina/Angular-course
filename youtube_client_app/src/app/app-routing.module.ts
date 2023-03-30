@@ -9,7 +9,7 @@ import {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: MAIN_PAGE_ROUTE,
+    redirectTo: AUTH_PAGE_ROUTE,
     pathMatch: 'full',
   },
   {
