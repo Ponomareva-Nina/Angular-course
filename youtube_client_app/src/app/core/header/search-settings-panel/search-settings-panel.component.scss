@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .sorting {
@@ -12,6 +13,8 @@
 
 .filter-input {
   height: 2rem;
+  border-radius: .5rem;
+  background-color: var(--input-bg-color);
 
   &:focus {
     outline: 1px solid var(--auxiliary-color);

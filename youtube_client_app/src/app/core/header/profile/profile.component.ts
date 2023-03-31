@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { AUTH_PAGE_ROUTE } from '../../../../constants/routing-constants';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +9,17 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export default class ProfileComponent {
-  public constructor(private authService: AuthService) {}
+  public constructor(
+    protected authService: AuthService,
+    private router: Router
+  ) {}
 
-  public name = this.authService.username || 'Your name';
+  public handleLoginClick(): void {
+    this.router.navigate([AUTH_PAGE_ROUTE]);
+  }
+
+  public handleLogoutClick(): void {
+    this.authService.LogoutUser();
+    this.router.navigate([AUTH_PAGE_ROUTE]);
+  }
 }

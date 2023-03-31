@@ -18,7 +18,7 @@
   gap: 1rem;
   align-items: center;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 680px) {
     flex-direction: column-reverse;
   }
 }
@@ -36,7 +36,7 @@
 .profile {
   width: max-content;
   
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 680px) {
     width: 100%;
     justify-content: flex-end;
   }
