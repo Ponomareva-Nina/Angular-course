@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { SearchItemInterface } from '../models/search-item.model';
+import { SearchItemInterface } from '../../shared/models/search-item.model';
 import data from '../../../mockData/data.json';
-import SearchResponseInterface from '../models/search-response.model';
+import SearchResponseInterface from '../../shared/models/search-response.model';
 
 @Injectable({
   providedIn: 'root',

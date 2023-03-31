@@ -9,6 +9,7 @@ import SearchItemComponent from './components/search-results/search-item/search-
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import SearchResultsComponent from './components/search-results/search-results.component';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
+import { DetailedCardComponent } from './components/detailed-card/detailed-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { DetailedPageComponent } from './pages/detailed-page/detailed-page.compo
     FilterPipe,
     MainPageComponent,
     DetailedPageComponent,
+    DetailedCardComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   providers: [],

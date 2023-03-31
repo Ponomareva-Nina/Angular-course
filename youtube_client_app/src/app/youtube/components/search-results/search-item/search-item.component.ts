@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import {
   SearchItemInterface,
   StatisticsInterface,
-} from '../../../../core/models/search-item.model';
+} from '../../../../shared/models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
