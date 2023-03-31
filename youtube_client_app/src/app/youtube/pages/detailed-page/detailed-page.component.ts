@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-detailed-page',
   templateUrl: './detailed-page.component.html',
-  styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
   public searchItemID!: string;
