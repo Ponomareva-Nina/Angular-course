@@ -1,10 +1,13 @@
-<div class="card">
-  <div class="card__thumbnail" [ngStyle]="{
+<div class="thumbnail" [ngStyle]="{
     'background-image': thumbnailUrl
   }">
-  </div>
-  <app-socials [socialsData]="socialsInfo"></app-socials>
-  <h3 class="card__title">{{title}}</h3>
-  <button ngClass="btn card__btn">More...</button>
-  <div appBorderColor [publicationData]="publishedAt" ngClass="border-panel"></div>
 </div>
+<div class="details" appBorderColor [publicationData]="publishedAt">
+  <div class="inner-section">
+    <h2 class="title">{{title}}</h2>
+    <p class="date">{{publishedAt}}</p>
+    <h3>Description:</h3>
+    <p class="description">{{description}}</p>
+    <app-socials class="socials" [socialsData]="socialsInfo"></app-socials>
+  </div>
+</div> 

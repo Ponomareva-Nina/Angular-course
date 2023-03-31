@@ -18,11 +18,20 @@ export class SearchItemService {
     return `url(${imgUrl})`;
   }
 
+  public getFullThumbnailUrl(searchItem: SearchItemInterface): string {
+    const imgUrl = searchItem.snippet.thumbnails.maxres.url;
+    return `url(${imgUrl})`;
+  }
+
   public getPublishedAt(searchItem: SearchItemInterface): string {
     return searchItem.snippet.publishedAt;
   }
 
   public getSocialsInfo(searchItem: SearchItemInterface): StatisticsInterface {
     return searchItem.statistics;
+  }
+
+  public getDescription(searchItem: SearchItemInterface): string {
+    return searchItem.snippet.description;
   }
 }

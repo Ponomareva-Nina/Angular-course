@@ -37,7 +37,7 @@ export class DetailedCardComponent implements OnInit {
   }
 
   public get thumbnailUrl(): string {
-    return this.searchItemService.getSmallThumbnailUrl(this.searchItem);
+    return this.searchItemService.getFullThumbnailUrl(this.searchItem);
   }
 
   public get publishedAt(): string {
@@ -46,5 +46,9 @@ export class DetailedCardComponent implements OnInit {
 
   public get socialsInfo(): StatisticsInterface {
     return this.searchItemService.getSocialsInfo(this.searchItem);
+  }
+
+  public get description(): string {
+    return this.searchItemService.getDescription(this.searchItem);
   }
 }
