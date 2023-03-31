@@ -34,6 +34,11 @@ export class BorderColorDirective implements OnInit {
   }
 
   private setColor(color: string): void {
-    this.renderer.setStyle(this.elRef.nativeElement, 'background-color', color);
+    this.renderer.setStyle(
+      this.elRef.nativeElement,
+      'border-bottom',
+      '.5rem solid'
+    );
+    this.renderer.setStyle(this.elRef.nativeElement, 'border-color', color);
   }
 }
