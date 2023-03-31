@@ -1,4 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { SearchItemService } from 'src/app/core/services/search-item.service';
+import { Router } from '@angular/router';
+import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
 import {
   SearchItemInterface,
   StatisticsInterface,
@@ -12,20 +15,28 @@ import {
 export default class SearchItemComponent {
   @Input() public searchItem!: SearchItemInterface;
 
+  public constructor(
+    private searchItemService: SearchItemService,
+    private router: Router
+  ) {}
+
   public get title(): string {
-    return this.searchItem.snippet.title;
+    return this.searchItemService.getTitle(this.searchItem);
   }
 
   public get smallThumbnailUrl(): string {
-    const imgUrl = this.searchItem.snippet.thumbnails.standard.url;
-    return `url(${imgUrl})`;
+    return this.searchItemService.getSmallThumbnailUrl(this.searchItem);
   }
 
   public get publishedAt(): string {
-    return this.searchItem.snippet.publishedAt;
+    return this.searchItemService.getPublishedAt(this.searchItem);
   }
 
-  public getSocialsInfo(): StatisticsInterface {
-    return this.searchItem.statistics;
+  public get socialsInfo(): StatisticsInterface {
+    return this.searchItemService.getSocialsInfo(this.searchItem);
+  }
+
+  public openMore(): void {
+    this.router.navigate([MAIN_PAGE_ROUTE, this.searchItem.id]);
   }
 }

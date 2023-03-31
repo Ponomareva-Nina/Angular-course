@@ -13,4 +13,8 @@ export class ApiService {
   public getCurrentSearchResult(): SearchItemInterface[] {
     return this.mockData.items;
   }
+
+  public getItem(id: string): SearchItemInterface | null {
+    return this.mockData.items.find((item) => item.id === id) || null;
+  }
 }

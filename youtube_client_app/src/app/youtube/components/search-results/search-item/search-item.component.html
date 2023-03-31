@@ -3,8 +3,8 @@
     'background-image': smallThumbnailUrl
   }">
   </div>
-  <app-socials [socialsData]="getSocialsInfo()"></app-socials>
+  <app-socials [socialsData]="socialsInfo"></app-socials>
   <h3 class="card__title">{{title}}</h3>
-  <button ngClass="btn card__btn">More...</button>
+  <button ngClass="btn card__btn" (click)="openMore()">More...</button>
   <div appBorderColor [publicationData]="publishedAt" ngClass="border-panel"></div>
 </div>

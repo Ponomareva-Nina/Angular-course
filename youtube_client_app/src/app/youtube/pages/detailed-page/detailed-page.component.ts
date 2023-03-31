@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
-  public searchItemID: string | undefined;
+  public searchItemID!: string;
 
   public constructor(public route: ActivatedRoute) {}
 

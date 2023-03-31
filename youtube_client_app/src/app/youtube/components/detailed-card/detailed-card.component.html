@@ -1,1 +1,10 @@
-<p>detailed-card works!</p>
+<div class="card">
+  <div class="card__thumbnail" [ngStyle]="{
+    'background-image': thumbnailUrl
+  }">
+  </div>
+  <app-socials [socialsData]="socialsInfo"></app-socials>
+  <h3 class="card__title">{{title}}</h3>
+  <button ngClass="btn card__btn">More...</button>
+  <div appBorderColor [publicationData]="publishedAt" ngClass="border-panel"></div>
+</div>
