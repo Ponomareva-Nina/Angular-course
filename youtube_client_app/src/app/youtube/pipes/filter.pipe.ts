@@ -7,10 +7,10 @@ import { SearchItemInterface } from 'src/app/shared/models/search-item.model';
 })
 export class FilterPipe implements PipeTransform {
   public transform(
-    items: SearchItemInterface[],
+    items: SearchItemInterface[] | null,
     keyword: string
-  ): SearchItemInterface[] {
-    if (keyword.trim()) {
+  ): SearchItemInterface[] | null {
+    if (keyword.trim() && items) {
       return items.filter((item) =>
         item.snippet.title.toLowerCase().includes(keyword.toLowerCase())
       );

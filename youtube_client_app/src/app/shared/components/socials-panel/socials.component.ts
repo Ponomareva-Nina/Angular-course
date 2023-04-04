@@ -8,25 +8,25 @@ import { SocialInterface } from './socials.model';
   styleUrls: ['./socials.component.scss'],
 })
 export class SocialsComponent {
-  @Input() public socialsData!: StatisticsInterface;
+  @Input() public socialsData: StatisticsInterface | null = null;
 
   public getSocials(): SocialInterface[] {
     return [
       {
         img: './assets/viewed.svg',
-        data: this.socialsData.viewCount,
+        data: this.socialsData?.viewCount || '0',
       },
       {
         img: './assets/liked.svg',
-        data: this.socialsData.likeCount,
+        data: this.socialsData?.likeCount || '0',
       },
       {
         img: './assets/dislike.svg',
-        data: this.socialsData.dislikeCount,
+        data: this.socialsData?.favoriteCount || '0',
       },
       {
         img: './assets/comments.svg',
-        data: this.socialsData.commentCount,
+        data: this.socialsData?.commentCount || '0',
       },
     ];
   }

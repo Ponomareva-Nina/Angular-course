@@ -32,7 +32,7 @@ export default class SearchItemComponent {
     return this.searchItemService.getPublishedAt(this.searchItem);
   }
 
-  public get socialsInfo(): StatisticsInterface {
+  public get socialsInfo(): StatisticsInterface | null {
     return this.searchItemService.getSocialsInfo(this.searchItem);
   }
 

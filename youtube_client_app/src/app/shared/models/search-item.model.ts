@@ -34,7 +34,6 @@ interface SnippetInterface {
 export interface StatisticsInterface {
   viewCount: string;
   likeCount: string;
-  dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
 }
@@ -42,7 +41,10 @@ export interface StatisticsInterface {
 export interface SearchItemInterface {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    kind: string;
+    videoId: string;
+  };
   snippet: SnippetInterface;
   statistics: StatisticsInterface;
 }

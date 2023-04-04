@@ -1,35 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/services/api.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SearchItemService } from 'src/app/core/services/search-item.service';
 import {
   SearchItemInterface,
   StatisticsInterface,
 } from 'src/app/shared/models/search-item.model';
-import { NOT_FOUND } from 'src/constants/routing-constants';
+import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
   selector: 'app-detailed-card',
   templateUrl: './detailed-card.component.html',
   styleUrls: ['./detailed-card.component.scss'],
 })
-export class DetailedCardComponent implements OnInit {
+export class DetailedCardComponent implements OnInit, OnDestroy {
   @Input() public id = '';
-  public searchItem!: SearchItemInterface;
+  public searchItem: SearchItemInterface | null = null;
+  private sub!: Subscription;
 
   public constructor(
-    private apiService: ApiService,
     private searchItemService: SearchItemService,
-    private router: Router
+    private searchService: SearchService
   ) {}
 
   public ngOnInit(): void {
-    const item = this.apiService.getItem(this.id);
-    if (item) {
+    this.sub = this.searchService.fetchItem(this.id).subscribe((item) => {
       this.searchItem = item;
-    } else {
-      this.router.navigate([NOT_FOUND]);
-    }
+      console.log(this.searchItem);
+    });
   }
 
   public get title(): string {
@@ -44,11 +41,15 @@ export class DetailedCardComponent implements OnInit {
     return this.searchItemService.getPublishedAt(this.searchItem);
   }
 
-  public get socialsInfo(): StatisticsInterface {
+  public get socialsInfo(): StatisticsInterface | null {
     return this.searchItemService.getSocialsInfo(this.searchItem);
   }
 
   public get description(): string {
     return this.searchItemService.getDescription(this.searchItem);
+  }
+
+  public ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

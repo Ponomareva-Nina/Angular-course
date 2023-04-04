@@ -8,20 +8,24 @@ import { SortOptions } from 'src/constants/sort-options';
 })
 export class SortPipe implements PipeTransform {
   public transform(
-    items: SearchItemInterface[],
+    items: SearchItemInterface[] | null,
     currentSort: SortOptions
-  ): SearchItemInterface[] {
-    switch (currentSort) {
-      case SortOptions.DATE_ASC:
-        return this.sortByDate(items);
-      case SortOptions.DATE_DESC:
-        return this.sortByDate(items).reverse();
-      case SortOptions.VIEWS_ASC:
-        return this.sortByViews(items);
-      case SortOptions.VIEWS_DESC:
-        return this.sortByViews(items).reverse();
-      default:
-        return items;
+  ): SearchItemInterface[] | null {
+    if (items) {
+      switch (currentSort) {
+        case SortOptions.DATE_ASC:
+          return this.sortByDate(items);
+        case SortOptions.DATE_DESC:
+          return this.sortByDate(items).reverse();
+        case SortOptions.VIEWS_ASC:
+          return this.sortByViews(items);
+        case SortOptions.VIEWS_DESC:
+          return this.sortByViews(items).reverse();
+        default:
+          return items;
+      }
+    } else {
+      return null;
     }
   }
 

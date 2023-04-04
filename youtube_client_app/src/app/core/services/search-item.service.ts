@@ -9,29 +9,49 @@ import {
   providedIn: 'root',
 })
 export class SearchItemService {
-  public getTitle(searchItem: SearchItemInterface): string {
-    return searchItem.snippet.title;
+  public getTitle(searchItem: SearchItemInterface | null): string {
+    if (searchItem) {
+      return searchItem.snippet.title;
+    }
+    return 'no data';
   }
 
-  public getSmallThumbnailUrl(searchItem: SearchItemInterface): string {
-    const imgUrl = searchItem.snippet.thumbnails.standard.url;
-    return `url(${imgUrl})`;
+  public getSmallThumbnailUrl(searchItem: SearchItemInterface | null): string {
+    if (searchItem) {
+      const imgUrl = searchItem.snippet.thumbnails.standard.url;
+      return `url(${imgUrl})`;
+    }
+    return 'no data';
   }
 
-  public getFullThumbnailUrl(searchItem: SearchItemInterface): string {
-    const imgUrl = searchItem.snippet.thumbnails.maxres.url;
-    return `url(${imgUrl})`;
+  public getFullThumbnailUrl(searchItem: SearchItemInterface | null): string {
+    if (searchItem) {
+      const imgUrl = searchItem.snippet.thumbnails.medium.url;
+      return `url(${imgUrl})`;
+    }
+    return 'no data';
   }
 
-  public getPublishedAt(searchItem: SearchItemInterface): string {
-    return searchItem.snippet.publishedAt;
+  public getPublishedAt(searchItem: SearchItemInterface | null): string {
+    if (searchItem) {
+      return searchItem.snippet.publishedAt;
+    }
+    return 'no data';
   }
 
-  public getSocialsInfo(searchItem: SearchItemInterface): StatisticsInterface {
-    return searchItem.statistics;
+  public getSocialsInfo(
+    searchItem: SearchItemInterface | null
+  ): StatisticsInterface | null {
+    if (searchItem) {
+      return searchItem.statistics;
+    }
+    return null;
   }
 
-  public getDescription(searchItem: SearchItemInterface): string {
-    return searchItem.snippet.description;
+  public getDescription(searchItem: SearchItemInterface | null): string {
+    if (searchItem) {
+      return searchItem.snippet.description;
+    }
+    return 'no data';
   }
 }

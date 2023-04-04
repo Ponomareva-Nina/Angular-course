@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
+import { SearchItemInterface } from 'src/app/shared/models/search-item.model';
 import { SortOptions } from 'src/constants/sort-options';
-import { SearchItemInterface } from '../../shared/models/search-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
+  private searchResults = new BehaviorSubject<SearchItemInterface[]>([]);
+
   public constructor(protected apiService: ApiService) {}
-  private currentSearchResults: SearchItemInterface[] = [];
   private currentSortOption: SortOptions = SortOptions.VIEWS_DESC;
   private currentByKeywordFilter = '';
 
-  public updateSearchResult(): void {
-    this.currentSearchResults = this.apiService.getCurrentSearchResult();
+  public get searchResults$(): Observable<SearchItemInterface[]> {
+    return this.searchResults.asObservable();
   }
 
-  public get CurrentSearchItems(): SearchItemInterface[] {
-    return this.currentSearchResults;
+  public fetchResults(keyword: string): Observable<SearchItemInterface[]> {
+    return this.apiService.getSearchResult(keyword);
+  }
+
+  public fetchItem(id: string): Observable<SearchItemInterface> {
+    return this.apiService.getItem(id);
+  }
+
+  public setSearchResults(items: SearchItemInterface[]): void {
+    this.searchResults.next(items);
   }
 
   public get currentFilter(): string {
