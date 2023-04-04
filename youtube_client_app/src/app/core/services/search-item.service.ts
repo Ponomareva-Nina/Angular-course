@@ -18,7 +18,9 @@ export class SearchItemService {
 
   public getSmallThumbnailUrl(searchItem: SearchItemInterface | null): string {
     if (searchItem) {
-      const imgUrl = searchItem.snippet.thumbnails.standard.url;
+      const imgUrl =
+        searchItem.snippet.thumbnails.standard?.url ||
+        searchItem.snippet.thumbnails.default.url;
       return `url(${imgUrl})`;
     }
     return 'no data';
