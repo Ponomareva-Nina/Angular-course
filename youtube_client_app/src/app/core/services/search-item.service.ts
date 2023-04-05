@@ -20,15 +20,19 @@ export class SearchItemService {
       const imgUrl =
         searchItem.snippet.thumbnails.standard?.url ||
         searchItem.snippet.thumbnails.default.url;
-      return `url(${imgUrl})`;
+      return imgUrl;
     }
     return 'no data';
   }
 
   public getFullThumbnailUrl(searchItem: Nullable<VideoResponseItem>): string {
     if (searchItem) {
-      const imgUrl = searchItem.snippet.thumbnails.medium.url;
-      return `url(${imgUrl})`;
+      const imgUrl =
+        searchItem.snippet.thumbnails.maxres?.url ||
+        searchItem.snippet.thumbnails.high?.url ||
+        searchItem.snippet.thumbnails.medium?.url ||
+        searchItem.snippet.thumbnails.default.url;
+      return imgUrl;
     }
     return 'no data';
   }

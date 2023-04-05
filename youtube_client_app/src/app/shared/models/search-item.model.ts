@@ -6,8 +6,8 @@ export interface ThumbnailItemInterface {
 
 export interface ThumbnailsInterface {
   default: ThumbnailItemInterface;
-  medium: ThumbnailItemInterface;
-  high: ThumbnailItemInterface;
+  medium?: ThumbnailItemInterface;
+  high?: ThumbnailItemInterface;
   standard?: ThumbnailItemInterface;
   maxres?: ThumbnailItemInterface;
 }
