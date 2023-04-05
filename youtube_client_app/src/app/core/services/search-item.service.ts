@@ -14,13 +14,19 @@ export class SearchItemService {
   }
 
   public getSmallThumbnailUrl(searchItem: SearchItemInterface): string {
-    const imgUrl = searchItem.snippet.thumbnails.standard.url;
-    return `url(${imgUrl})`;
+    const imgUrl =
+      searchItem.snippet.thumbnails.standard?.url ||
+      searchItem.snippet.thumbnails.default.url;
+    return imgUrl;
   }
 
   public getFullThumbnailUrl(searchItem: SearchItemInterface): string {
-    const imgUrl = searchItem.snippet.thumbnails.maxres.url;
-    return `url(${imgUrl})`;
+    const imgUrl =
+      searchItem.snippet.thumbnails.maxres?.url ||
+      searchItem.snippet.thumbnails.high?.url ||
+      searchItem.snippet.thumbnails.medium?.url ||
+      searchItem.snippet.thumbnails.default.url;
+    return imgUrl;
   }
 
   public getPublishedAt(searchItem: SearchItemInterface): string {

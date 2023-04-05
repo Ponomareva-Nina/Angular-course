@@ -1,7 +1,6 @@
 <div class="card" appBorderColor [publicationData]="publishedAt">
-  <div class="card__thumbnail" [ngStyle]="{
-    'background-image': smallThumbnailUrl
-  }">
+  <div class="card__thumbnail">
+    <img [src]="smallThumbnailUrl" alt="video">
   </div>
   <app-socials [socialsData]="socialsInfo"></app-socials>
   <h3 class="card__title">{{title}}</h3>

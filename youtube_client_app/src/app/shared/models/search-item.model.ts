@@ -6,10 +6,10 @@ interface ThumbnailItemInterface {
 
 interface ThumbnailsInterface {
   default: ThumbnailItemInterface;
-  medium: ThumbnailItemInterface;
-  high: ThumbnailItemInterface;
-  standard: ThumbnailItemInterface;
-  maxres: ThumbnailItemInterface;
+  medium?: ThumbnailItemInterface;
+  high?: ThumbnailItemInterface;
+  standard?: ThumbnailItemInterface;
+  maxres?: ThumbnailItemInterface;
 }
 
 interface LocalizationInterface {

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  CanLoad,
   Route,
   Router,
   RouterStateSnapshot,
@@ -15,7 +16,7 @@ import { AUTH_PAGE_ROUTE } from '../../../constants/routing-constants';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
   public constructor(private router: Router, private authSevice: AuthService) {}
 
   public canActivate(
