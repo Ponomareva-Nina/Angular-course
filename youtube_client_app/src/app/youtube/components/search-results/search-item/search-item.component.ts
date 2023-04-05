@@ -19,11 +19,11 @@ export default class SearchItemComponent {
     private router: Router
   ) {}
 
-  public get title(): string {
+  public get title(): string | null {
     return this.searchItemService.getTitle(this.searchItem);
   }
 
-  public get smallThumbnailUrl(): string {
+  public get smallThumbnailUrl(): string | null {
     return this.searchItemService.getSmallThumbnailUrl(this.searchItem);
   }
 

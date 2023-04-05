@@ -31,7 +31,7 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
     return this.searchItemService.getTitle(this.searchItem);
   }
 
-  public get thumbnailUrl(): string {
+  public get thumbnailUrl(): string | null {
     return this.searchItemService.getFullThumbnailUrl(this.searchItem);
   }
 

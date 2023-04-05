@@ -15,17 +15,21 @@ export class SearchItemService {
     return 'no data';
   }
 
-  public getSmallThumbnailUrl(searchItem: Nullable<VideoResponseItem>): string {
+  public getSmallThumbnailUrl(
+    searchItem: Nullable<VideoResponseItem>
+  ): string | null {
     if (searchItem) {
       const imgUrl =
         searchItem.snippet.thumbnails.standard?.url ||
         searchItem.snippet.thumbnails.default.url;
       return imgUrl;
     }
-    return 'no data';
+    return null;
   }
 
-  public getFullThumbnailUrl(searchItem: Nullable<VideoResponseItem>): string {
+  public getFullThumbnailUrl(
+    searchItem: Nullable<VideoResponseItem>
+  ): string | null {
     if (searchItem) {
       const imgUrl =
         searchItem.snippet.thumbnails.maxres?.url ||
@@ -34,7 +38,7 @@ export class SearchItemService {
         searchItem.snippet.thumbnails.default.url;
       return imgUrl;
     }
-    return 'no data';
+    return null;
   }
 
   public getPublishedAt(searchItem: Nullable<VideoResponseItem>): string {
