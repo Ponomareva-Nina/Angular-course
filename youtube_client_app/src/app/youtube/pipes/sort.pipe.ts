@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItemInterface } from 'src/app/shared/models/search-item.model';
+import { Nullable } from 'src/app/shared/models/types';
+import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
 import { SortOptions } from 'src/constants/sort-options';
 
 @Pipe({
@@ -8,9 +9,9 @@ import { SortOptions } from 'src/constants/sort-options';
 })
 export class SortPipe implements PipeTransform {
   public transform(
-    items: SearchItemInterface[] | null,
+    items: Nullable<VideoResponseItem[]>,
     currentSort: SortOptions
-  ): SearchItemInterface[] | null {
+  ): Nullable<VideoResponseItem[]> {
     if (items) {
       switch (currentSort) {
         case SortOptions.DATE_ASC:
@@ -29,7 +30,7 @@ export class SortPipe implements PipeTransform {
     }
   }
 
-  private sortByDate(items: SearchItemInterface[]): SearchItemInterface[] {
+  private sortByDate(items: VideoResponseItem[]): VideoResponseItem[] {
     return items.sort(
       (prev, next) =>
         new Date(next.snippet.publishedAt).getTime() -
@@ -37,7 +38,7 @@ export class SortPipe implements PipeTransform {
     );
   }
 
-  private sortByViews(items: SearchItemInterface[]): SearchItemInterface[] {
+  private sortByViews(items: VideoResponseItem[]): VideoResponseItem[] {
     return items.sort(
       (prev, next) =>
         Number(next.statistics.viewCount) - Number(prev.statistics.viewCount)

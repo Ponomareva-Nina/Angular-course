@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { SearchService } from 'src/app/core/services/search.service';
-import { SearchItemInterface } from 'src/app/shared/models/search-item.model';
+import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
 
 @Component({
   selector: 'app-search-results',
@@ -15,7 +15,7 @@ export default class SearchResultsComponent {
     protected apiService: ApiService
   ) {}
 
-  public get searchItems$(): Observable<SearchItemInterface[]> {
+  public get searchItems$(): Observable<VideoResponseItem[]> {
     return this.searchService.searchResults$;
   }
 }

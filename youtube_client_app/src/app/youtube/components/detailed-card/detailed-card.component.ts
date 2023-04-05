@@ -1,11 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SearchItemService } from 'src/app/core/services/search-item.service';
-import {
-  SearchItemInterface,
-  StatisticsInterface,
-} from 'src/app/shared/models/search-item.model';
 import { Subscription } from 'rxjs';
 import { SearchService } from 'src/app/core/services/search.service';
+import { Nullable } from 'src/app/shared/models/types';
+import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
+import { StatisticsInterface } from 'src/app/shared/models/search-item.model';
 
 @Component({
   selector: 'app-detailed-card',
@@ -14,7 +13,7 @@ import { SearchService } from 'src/app/core/services/search.service';
 })
 export class DetailedCardComponent implements OnInit, OnDestroy {
   @Input() public id = '';
-  public searchItem: SearchItemInterface | null = null;
+  public searchItem: Nullable<VideoResponseItem> = null;
   private sub!: Subscription;
 
   public constructor(
@@ -25,7 +24,6 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.sub = this.searchService.fetchItem(this.id).subscribe((item) => {
       this.searchItem = item;
-      console.log(this.searchItem);
     });
   }
 
@@ -41,7 +39,7 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
     return this.searchItemService.getPublishedAt(this.searchItem);
   }
 
-  public get socialsInfo(): StatisticsInterface | null {
+  public get socialsInfo(): Nullable<StatisticsInterface> {
     return this.searchItemService.getSocialsInfo(this.searchItem);
   }
 

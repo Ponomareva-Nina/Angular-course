@@ -28,7 +28,6 @@ export class SearchPanelComponent implements OnDestroy {
       this.subscription = this.searchService
         .fetchResults(this.searchInputValue)
         .subscribe((items) => {
-          console.log(items);
           this.searchService.setSearchResults(items);
         });
     }

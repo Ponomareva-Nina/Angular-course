@@ -1,15 +1,16 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItemInterface } from 'src/app/shared/models/search-item.model';
+import { Nullable } from 'src/app/shared/models/types';
+import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
 
 @Pipe({
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
   public transform(
-    items: SearchItemInterface[] | null,
+    items: Nullable<VideoResponseItem[]>,
     keyword: string
-  ): SearchItemInterface[] | null {
+  ): Nullable<VideoResponseItem[]> {
     if (keyword.trim() && items) {
       return items.filter((item) =>
         item.snippet.title.toLowerCase().includes(keyword.toLowerCase())

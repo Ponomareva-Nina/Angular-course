@@ -2,10 +2,9 @@ import { Component, Input } from '@angular/core';
 import { SearchItemService } from 'src/app/core/services/search-item.service';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
-import {
-  SearchItemInterface,
-  StatisticsInterface,
-} from '../../../../shared/models/search-item.model';
+import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
+import { StatisticsInterface } from 'src/app/shared/models/search-item.model';
+import { Nullable } from 'src/app/shared/models/types';
 
 @Component({
   selector: 'app-search-item',
@@ -13,7 +12,7 @@ import {
   styleUrls: ['./search-item.component.scss'],
 })
 export default class SearchItemComponent {
-  @Input() public searchItem!: SearchItemInterface;
+  @Input() public searchItem!: VideoResponseItem;
 
   public constructor(
     private searchItemService: SearchItemService,
@@ -32,7 +31,7 @@ export default class SearchItemComponent {
     return this.searchItemService.getPublishedAt(this.searchItem);
   }
 
-  public get socialsInfo(): StatisticsInterface | null {
+  public get socialsInfo(): Nullable<StatisticsInterface> {
     return this.searchItemService.getSocialsInfo(this.searchItem);
   }
 

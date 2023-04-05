@@ -1,13 +1,25 @@
-import { SearchItemInterface } from './search-item.model';
+import { SnippetInterface } from './search-item.model';
 
 interface PageInfoUnterface {
   totalResults: number;
   resultsPerPage: number;
 }
 
-export default interface SearchResponseInterface {
+interface IdInterface {
+  kind: string;
+  videoId: string;
+}
+
+export interface SearchResponseItem {
+  kind?: string;
+  etag?: string;
+  id: IdInterface;
+  snippet?: SnippetInterface;
+}
+
+export interface SearchResponseInterface {
   kind: string;
   etag: string;
   pageInfo: PageInfoUnterface;
-  items: SearchItemInterface[];
+  items: SearchResponseItem[];
 }

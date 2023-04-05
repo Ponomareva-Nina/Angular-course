@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { StatisticsInterface } from '../../models/search-item.model';
 import { SocialInterface } from './socials.model';
+import { StatisticsInterface } from '../../models/search-item.model';
+import { Nullable } from '../../models/types';
 
 @Component({
   selector: 'app-socials',
@@ -8,26 +9,29 @@ import { SocialInterface } from './socials.model';
   styleUrls: ['./socials.component.scss'],
 })
 export class SocialsComponent {
-  @Input() public socialsData: StatisticsInterface | null = null;
+  @Input() public socialsData: Nullable<StatisticsInterface> = null;
 
-  public getSocials(): SocialInterface[] {
-    return [
-      {
-        img: './assets/viewed.svg',
-        data: this.socialsData?.viewCount || '0',
-      },
-      {
-        img: './assets/liked.svg',
-        data: this.socialsData?.likeCount || '0',
-      },
-      {
-        img: './assets/dislike.svg',
-        data: this.socialsData?.favoriteCount || '0',
-      },
-      {
-        img: './assets/comments.svg',
-        data: this.socialsData?.commentCount || '0',
-      },
-    ];
+  public getSocials(): Nullable<SocialInterface[]> {
+    if (this.socialsData) {
+      return [
+        {
+          img: './assets/viewed.svg',
+          data: this.socialsData?.viewCount,
+        },
+        {
+          img: './assets/liked.svg',
+          data: this.socialsData?.likeCount,
+        },
+        {
+          img: './assets/dislike.svg',
+          data: this.socialsData?.favoriteCount,
+        },
+        {
+          img: './assets/comments.svg',
+          data: this.socialsData?.commentCount,
+        },
+      ];
+    }
+    return null;
   }
 }

@@ -7,7 +7,7 @@ import { THOUSAND, THOUSAND_DIGITS_NUM } from './socials-component-constants';
 export class SocialsCountPipe implements PipeTransform {
   // eslint-disable-next-line class-methods-use-this
   public transform(value: string): string {
-    if (value.length > THOUSAND_DIGITS_NUM) {
+    if (value && value.length > THOUSAND_DIGITS_NUM) {
       const briefNum = (Number(value) / THOUSAND).toFixed(0);
       return `${briefNum}k`;
     }
