@@ -47,6 +47,11 @@ export class ApiService {
       .get<VideoResponseInterface>(
         `${BASE_URL}/videos?key=${API_KEY}&type=video&id=${id}&part=snippet,statistics`
       )
-      .pipe(map((response) => response.items[0]));
+      .pipe(
+        map((response) => {
+          const [item] = response.items;
+          return item;
+        })
+      );
   }
 }

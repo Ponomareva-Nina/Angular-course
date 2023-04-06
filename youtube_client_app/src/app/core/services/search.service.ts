@@ -1,32 +1,55 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
+import { HttpErrorMessages } from 'src/constants/api-constants';
 import { SortOptions } from 'src/constants/sort-options';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SearchService {
-  private searchResults = new BehaviorSubject<VideoResponseItem[]>([]);
+  private searchResults = new BehaviorSubject<VideoResponseItem[] | string>([]);
 
   public constructor(protected apiService: ApiService) {}
   private currentSortOption: SortOptions = SortOptions.VIEWS_DESC;
   private currentByKeywordFilter = '';
 
-  public get searchResults$(): Observable<VideoResponseItem[]> {
+  public get searchResults$(): Observable<VideoResponseItem[] | string> {
     return this.searchResults.asObservable();
   }
 
-  public fetchResults(keyword: string): Observable<VideoResponseItem[]> {
-    return this.apiService.getSearchResult(keyword);
+  public fetchResults(
+    keyword: string
+  ): Observable<VideoResponseItem[] | string> {
+    return this.apiService.getSearchResult(keyword).pipe(
+      catchError((err: HttpErrorResponse) => {
+        const message = this.getHttpErrorMessage(err);
+        return of(message);
+      })
+    );
   }
 
-  public fetchItem(id: string): Observable<VideoResponseItem> {
-    return this.apiService.getItem(id);
+  // eslint-disable-next-line class-methods-use-this
+  private getHttpErrorMessage(err: HttpErrorResponse): string {
+    const status = err.status.toString();
+    const message =
+      HttpErrorMessages[status as keyof typeof HttpErrorMessages] ||
+      err.message;
+    return message;
   }
 
-  public setSearchResults(items: VideoResponseItem[]): void {
+  public fetchItem(id: string): Observable<VideoResponseItem | string> {
+    return this.apiService.getItem(id).pipe(
+      catchError((err: HttpErrorResponse) => {
+        const message = this.getHttpErrorMessage(err);
+        return of(message);
+      })
+    );
+  }
+
+  public setSearchResults(items: VideoResponseItem[] | string): void {
     this.searchResults.next(items);
   }
 

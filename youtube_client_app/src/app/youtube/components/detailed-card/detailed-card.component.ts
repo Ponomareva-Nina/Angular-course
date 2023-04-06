@@ -14,6 +14,7 @@ import { StatisticsInterface } from 'src/app/shared/models/search-item.model';
 export class DetailedCardComponent implements OnInit, OnDestroy {
   @Input() public id = '';
   public searchItem: Nullable<VideoResponseItem> = null;
+  public errorMessage: Nullable<string> = null;
   private sub!: Subscription;
 
   public constructor(
@@ -22,8 +23,12 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.sub = this.searchService.fetchItem(this.id).subscribe((item) => {
-      this.searchItem = item;
+    this.sub = this.searchService.fetchItem(this.id).subscribe((response) => {
+      if (typeof response === 'string') {
+        this.errorMessage = response;
+      } else {
+        this.searchItem = response;
+      }
     });
   }
 
