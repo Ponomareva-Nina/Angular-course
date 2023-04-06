@@ -1,6 +1,6 @@
 <ul ngClass="socials-list">
   <li ngClass="social-item" *ngFor="let social of getSocials()">
-    <img [src]="social.img">
+    <img [src]="social.img" alt="{{social.name}}:">
     <span>{{ social.data | socialsCount }}</span>
   </li>
 </ul>

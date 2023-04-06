@@ -15,18 +15,22 @@ export class SocialsComponent {
     if (this.socialsData) {
       return [
         {
+          name: 'views',
           img: './assets/viewed.svg',
           data: this.socialsData?.viewCount,
         },
         {
+          name: 'likes',
           img: './assets/liked.svg',
           data: this.socialsData?.likeCount,
         },
         {
-          img: './assets/dislike.svg',
+          name: 'favourites',
+          img: './assets/favourite.svg',
           data: this.socialsData?.favoriteCount,
         },
         {
+          name: 'comments',
           img: './assets/comments.svg',
           data: this.socialsData?.commentCount,
         },
