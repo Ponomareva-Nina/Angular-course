@@ -22,12 +22,6 @@ export class AuthValidators {
     if (!/[!@#?#$&_%]+/.test(control.value)) {
       errors.push('inclusion of at least one special character, e.g., ! @ # ?');
     }
-
-    if (errors.length) {
-      return {
-        strongPassword: errors,
-      };
-    }
-    return null;
+    return errors.length ? { strongPassword: errors } : null;
   }
 }
