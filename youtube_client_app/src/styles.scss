@@ -95,3 +95,15 @@ input[type='password'] {
   color: var(--auxiliary-color);
   font-weight: bold;
 }
+
+button:disabled {
+  color: var(--auxiliary-color);
+  background-color: var(--disabled-bg-color);
+  border: 1px solid var(--auxiliary-color);
+
+  &:hover {
+    pointer-events: none;
+    filter: none;
+    background-color: var(--disabled-bg-color);
+  }
+}

@@ -32,3 +32,20 @@
   margin-top: 2rem;
   align-self: flex-end;
 }
+
+input.ng-invalid.ng-touched {
+  border-bottom: 2px solid var(--error-color);
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 2px solid var(--success-color);
+}
+
+.validation {
+  color: var(--error-color);
+  font-size: 1rem;
+
+  li {
+    color: var(--auxiliary-color);
+  }
+}

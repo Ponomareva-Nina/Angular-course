@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
 import { AuthService } from '../../core/services/auth.service';
+import { AuthValidators } from '../auth.validators';
 
 @Component({
   selector: 'app-auth-form',
@@ -18,8 +19,10 @@ export default class AuthFormComponent implements OnInit {
   ) {}
 
   public login(): void {
-    const data = this.form.value;
-    this.authService.loginUser(data.username, data.password);
+    if (this.form.valid) {
+      const data = this.form.value;
+      this.authService.loginUser(data.username, data.password);
+    }
     if (this.authService.username) {
       this.router.navigate([MAIN_PAGE_ROUTE]);
     }
@@ -27,8 +30,11 @@ export default class AuthFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl(''),
+      username: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        AuthValidators.strongPassword,
+      ]),
     });
   }
 }
