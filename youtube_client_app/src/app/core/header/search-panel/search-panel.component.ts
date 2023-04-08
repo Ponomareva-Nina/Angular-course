@@ -1,7 +1,8 @@
 import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
-import { Subscription } from 'rxjs';
+import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { FormControl } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 
 @Component({
@@ -11,22 +12,26 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchPanelComponent implements OnDestroy {
   @Output() public onSettingsBtnClick: EventEmitter<void> = new EventEmitter();
-  public searchInputValue = '';
+  public searchInput = new FormControl('');
   private subscription!: Subscription;
 
   public constructor(
     protected searchService: SearchService,
     private router: Router
-  ) {}
+  ) {
+    this.searchInput.valueChanges
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe(() => this.handleClickOnSearchBtn());
+  }
 
   public handleClickOnSettingsBtn(): void {
     this.onSettingsBtnClick.emit();
   }
 
   public handleClickOnSearchBtn(): void {
-    if (this.searchInputValue.trim().length) {
+    if (this.searchInput.value?.trim().length) {
       this.subscription = this.searchService
-        .fetchResults(this.searchInputValue)
+        .fetchResults(this.searchInput.value)
         .subscribe((items) => {
           this.searchService.setSearchResults(items);
         });
