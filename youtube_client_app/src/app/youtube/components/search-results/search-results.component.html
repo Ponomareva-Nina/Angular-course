@@ -1,8 +1,18 @@
-<section ngClass="search-result">
-  <app-search-item 
-  *ngFor="let item of searchService.CurrentSearchItems
-  | sort:searchService.currentSort
-  | filter:searchService.currentFilter"
-  [searchItem]="item"></app-search-item>
-</section>
+<div *ngIf="!errorMessage && !searchItems?.length; else searchList">
+  <p class="http-err-message">No results.</p>
+</div>
 
+<ng-template #searchList>
+  <section *ngIf="searchItems; else error" ngClass="search-result">
+      <app-search-item 
+        *ngFor="let item of searchItems
+        | sort:searchService.currentSort
+        | filter:searchService.currentFilter"
+        [searchItem]="item">
+      </app-search-item>
+  </section>
+
+  <ng-template #error>
+    <p class="http-err-message">{{ errorMessage }}</p>
+  </ng-template>
+</ng-template>

@@ -1,10 +1,10 @@
-interface ThumbnailItemInterface {
+export interface ThumbnailItemInterface {
   url: string;
   width: number;
   height: number;
 }
 
-interface ThumbnailsInterface {
+export interface ThumbnailsInterface {
   default: ThumbnailItemInterface;
   medium?: ThumbnailItemInterface;
   high?: ThumbnailItemInterface;
@@ -12,12 +12,12 @@ interface ThumbnailsInterface {
   maxres?: ThumbnailItemInterface;
 }
 
-interface LocalizationInterface {
+export interface LocalizationInterface {
   title: string;
   description: string;
 }
 
-interface SnippetInterface {
+export interface SnippetInterface {
   publishedAt: string;
   channelId: string;
   title: string;
@@ -34,15 +34,6 @@ interface SnippetInterface {
 export interface StatisticsInterface {
   viewCount: string;
   likeCount: string;
-  dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
-}
-
-export interface SearchItemInterface {
-  kind: string;
-  etag: string;
-  id: string;
-  snippet: SnippetInterface;
-  statistics: StatisticsInterface;
 }

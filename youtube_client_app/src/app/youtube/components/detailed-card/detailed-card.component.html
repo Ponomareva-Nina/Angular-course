@@ -1,12 +1,21 @@
-<div class="thumbnail">
-  <img [src]="thumbnailUrl" alt="">
+<div *ngIf="errorMessage; else card">
+  <p class="http-err-message">{{ errorMessage }}</p>
 </div>
-<div class="details" appBorderColor [publicationData]="publishedAt">
-  <div class="inner-section">
-    <h2 class="title">{{title}}</h2>
-    <p class="date">{{publishedAt}}</p>
-    <h3>Description:</h3>
-    <p class="description">{{description}}</p>
-    <app-socials class="socials" [socialsData]="socialsInfo"></app-socials>
+
+<ng-template #card>
+  <div class="card">
+      <div class="thumbnail">
+        <img [src]="thumbnailUrl" alt="">
+      </div>
+      <div class="details" appBorderColor [publicationData]="publishedAt">
+        <div class="inner-section">
+          <h2 class="title">{{title}}</h2>
+          <p class="date">{{publishedAt}}</p>
+          <h3>Description:</h3>
+          <p class="description">{{description}}</p>
+          <app-socials class="socials" [socialsData]="socialsInfo"></app-socials>
+        </div>
+      </div> 
   </div>
-</div> 
+  
+</ng-template>

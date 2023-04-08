@@ -87,3 +87,11 @@ input[type='password'] {
 .form-label {
   color: var(--auxiliary-color);
 }
+
+.http-err-message {
+  padding: 0 3rem;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--auxiliary-color);
+  font-weight: bold;
+}
