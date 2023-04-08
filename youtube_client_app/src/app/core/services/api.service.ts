@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { SearchItemInterface } from '../../models/search-item.model';
-import SearchResponseInterface from '../../models/search-response.model';
+import { SearchItemInterface } from '../../shared/models/search-item.model';
 import data from '../../../mockData/data.json';
+import SearchResponseInterface from '../../shared/models/search-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +12,9 @@ export class ApiService {
 
   public getCurrentSearchResult(): SearchItemInterface[] {
     return this.mockData.items;
+  }
+
+  public getItem(id: string): SearchItemInterface | null {
+    return this.mockData.items.find((item) => item.id === id) || null;
   }
 }

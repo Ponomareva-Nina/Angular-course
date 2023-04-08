@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import AuthComponent from './components/auth.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthRoutingModule } from './auth.routing-module';
+import AuthFormComponent from './components/auth-form.component';
+import { AuthPageComponent } from './pages/auth-page.component';
 
 @NgModule({
-  declarations: [AuthComponent],
-  imports: [CommonModule],
-  providers: [],
-  exports: [AuthComponent],
+  declarations: [AuthFormComponent, AuthPageComponent],
+  imports: [CommonModule, AuthRoutingModule, FormsModule, ReactiveFormsModule],
+  exports: [AuthPageComponent],
 })
-export default class AuthModule {}
+export class AuthModule {}

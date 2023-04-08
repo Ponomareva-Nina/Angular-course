@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.not-found-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 36rem;
+  gap: 2rem;
+}
+
+.title {
+  color: var(--auxiliary-color);
+}
+
+.image {
+  width: 10rem;
+  height: 10rem;
+}
+
+.link {
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-size: 1.5rem;
+  align-self: flex-end;
+}

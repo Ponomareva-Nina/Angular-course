@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { SearchService } from 'src/app/main-page/services/search.service';
+import { SearchService } from 'src/app/core/services/search.service';
 import { SortOptions } from 'src/constants/sort-options';
 
 @Component({

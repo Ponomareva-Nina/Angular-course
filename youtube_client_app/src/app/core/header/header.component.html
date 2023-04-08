@@ -1,12 +1,11 @@
 <header class="header wrapper">
-  <div class="left-section">
-    <app-logo></app-logo>
-    <app-search-panel
-      class="search-input-panel"
-      (onSettingsBtnClick)="toggleSearchSettings()"
-    ></app-search-panel>
+  <div class="top-section">
+    <div class="search-section">
+      <app-search-panel (onSettingsBtnClick)="toggleSearchSettings()"></app-search-panel>
+    </div>
+    
+    <app-profile class="profile"></app-profile>
   </div>
-  <app-profile class="profile"></app-profile>
+  <app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>
 </header>
 
-<app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>

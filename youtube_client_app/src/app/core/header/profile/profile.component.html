@@ -1,4 +1,7 @@
-<div class="profile-container">
-  <span class="userame">{{ name }}</span>
-  <img class='logo' src="./assets/login.svg">
-</div>
+<span class="userame">{{ authService.username || 'Your name' }}</span>
+<img class="avatar" src="./assets/login.svg" alt="profile">
+
+<button *ngIf="authService.username; else login" ngClass="btn auth-btn" (click)="handleLogoutClick()">Logout</button>
+<ng-template #login>
+  <button ngClass="btn auth-btn" (click)="handleLoginClick()">Login</button>
+</ng-template>

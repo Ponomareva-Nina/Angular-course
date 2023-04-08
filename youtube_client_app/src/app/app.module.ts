@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
-import AuthModule from './auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import CoreModule from './core/core.module';
-import MainPageModule from './main-page/main-page.module';
+import { YoutubeModule } from './youtube/youtube.module';
+import { Page404Module } from './page404/page404.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,9 +14,9 @@ import MainPageModule from './main-page/main-page.module';
     AppRoutingModule,
     AuthModule,
     CoreModule,
-    MainPageModule,
+    YoutubeModule,
+    Page404Module,
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}

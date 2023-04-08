@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ApiService } from '../../services/api.service';
-import { SearchService } from '../../../main-page/services/search.service';
+import { Router } from '@angular/router';
+import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search-panel',
@@ -12,18 +13,18 @@ export class SearchPanelComponent {
   public searchInputValue = '';
 
   public constructor(
-    protected apiService: ApiService,
-    protected searchService: SearchService
+    private searchService: SearchService,
+    private router: Router
   ) {}
 
   public handleClickOnSettingsBtn(): void {
     this.onSettingsBtnClick.emit();
   }
 
-  public sendRequest(): void {
+  public handleClickOnSearchBtn(): void {
     if (this.searchInputValue.trim().length) {
       this.searchService.updateSearchResult();
-      this.searchInputValue = '';
     }
+    this.router.navigate([MAIN_PAGE_ROUTE]);
   }
 }

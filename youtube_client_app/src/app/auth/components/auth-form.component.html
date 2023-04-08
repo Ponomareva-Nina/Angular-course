@@ -1,0 +1,12 @@
+<h2 class="title">Login</h2>
+<form class="form-layout" [formGroup]="form" (ngSubmit)="login()">
+  <label class="form-label">
+    login
+    <input ngClass="input" type="text" formControlName="username">
+  </label>
+  <label class="form-label">
+    password
+    <input ngClass="input" type="password" formControlName="password">
+  </label>
+  <button type="submit" ngClass="btn form-btn">login</button>
+</form>
