@@ -113,7 +113,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "https://rolling-scopes-school.github.io/ponomareva-nina-ANGULAR2023Q1/",
-              "message": "Deploy youtube-client-app to Github Pages"
+            "message": "Deploy youtube-client-app to Github Pages"
           }
         }
       }
