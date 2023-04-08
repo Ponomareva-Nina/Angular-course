@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
@@ -10,16 +16,19 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.scss'],
 })
-export class SearchPanelComponent implements OnDestroy {
+export class SearchPanelComponent implements OnDestroy, OnInit {
   @Output() public onSettingsBtnClick: EventEmitter<void> = new EventEmitter();
   public searchInput = new FormControl('');
   private subscription!: Subscription;
+  private inputSub!: Subscription;
 
   public constructor(
     protected searchService: SearchService,
     private router: Router
-  ) {
-    this.searchInput.valueChanges
+  ) {}
+
+  public ngOnInit(): void {
+    this.inputSub = this.searchInput.valueChanges
       .pipe(debounceTime(500), distinctUntilChanged())
       .subscribe(() => this.handleClickOnSearchBtn());
   }
@@ -44,5 +53,6 @@ export class SearchPanelComponent implements OnDestroy {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.inputSub.unsubscribe();
   }
 }
