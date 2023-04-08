@@ -1,0 +1,81 @@
+@import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+html {
+  font-size: var(--base-size);
+}
+
+body,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin font-main() {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--font-main-color);
+}
+
+ul, 
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  @include font-main();
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input[type='text'] {
+  outline: none;
+  border: 1px transparent;
+}
+
+.wrapper {
+  max-width: 1200px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.btn {
+  transition: all .3s;
+  background-color: var(--btn-bg);
+  text-transform: lowercase;
+  color: var(--font-btn-color);
+  @include font-main();
+  color: var(--font-btn-color);
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+    filter: var(--hover-shadow);
+  }
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include font-main();
+}

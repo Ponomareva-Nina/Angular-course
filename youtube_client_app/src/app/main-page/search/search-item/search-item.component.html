@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card__thumbnail" [ngStyle]="{
+    'background-image': smallThumbnailUrl
+  }">
+  </div>
+  <app-socials [socialsData]="getSocialsInfo()"></app-socials>
+  <h3 class="card__title">{{title}}</h3>
+  <button ngClass="btn card__btn">More...</button>
+  <div appBorderColor [publicationData]="publishedAt" ngClass="border-panel"></div>
+</div>

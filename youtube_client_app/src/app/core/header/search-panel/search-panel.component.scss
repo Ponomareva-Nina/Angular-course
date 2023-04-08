@@ -1,0 +1,30 @@
+.search-container__search-btn {
+  height: 2.4rem;
+  border-radius: 0 4px 4px 0;
+  background-color: var(--btn-hover-bg);
+}
+
+.settings-btn {
+  transition: all .3s ease;
+  &:hover {
+    filter: var(--hover-shadow);
+  }
+}
+
+.settings-btn__img {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.search-input {
+  height: 2.4rem;
+  width: 100%;
+  background-color: var(--input-bg-color);
+  color: var(--font-main-color);
+  outline: none;
+  border: none;
+
+  &::placeholder {
+    color: var(--auxiliary-color);
+  }
+}

@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  max-width: 80%;
+  margin-left: auto;
+
+  & .search-input-panel {
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+    justify-content: center;
+    width: 52rem;
+    max-width: 100%;
+  }
+}
+
+.profile {
+  width: max-content;
+}

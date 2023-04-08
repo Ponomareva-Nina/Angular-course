@@ -1,0 +1,16 @@
+.profile-container {
+  display: flex;
+  gap: .8rem;
+  align-items: center;
+  width: 100%;
+
+  & .logo {
+    vertical-align: middle;
+    text-align: center;
+  }
+}
+
+.userame {
+  text-transform: capitalize;
+  text-align: end;
+}
