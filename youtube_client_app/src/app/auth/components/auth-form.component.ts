@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
+import { Nullable } from 'src/app/shared/models/types';
 import { AuthService } from '../../core/services/auth.service';
-import { AuthValidators } from '../auth.validators';
+import { AuthValidators } from '../password.validators';
 
 @Component({
   selector: 'app-auth-form',
@@ -30,11 +31,38 @@ export default class AuthFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.form = new FormGroup({
-      username: new FormControl('', [Validators.email, Validators.required]),
-      password: new FormControl('', [
+      username: new FormControl<string>('', [
+        Validators.email,
+        Validators.required,
+      ]),
+      password: new FormControl<string>('', [
         Validators.required,
         AuthValidators.strongPassword,
       ]),
     });
+  }
+
+  public get loginInput(): Nullable<FormControl<string>> {
+    return this.form.get('username') as FormControl;
+  }
+
+  public get loginRequiredError(): boolean {
+    return this.form.get('username')?.errors?.['required'];
+  }
+
+  public get loginEmailError(): boolean {
+    return this.form.get('username')?.errors?.['email'];
+  }
+
+  public get passwordInput(): Nullable<FormControl<string>> {
+    return this.form.get('password') as FormControl;
+  }
+
+  public get passwordRequiredError(): boolean {
+    return this.form.get('password')?.errors?.['required'];
+  }
+
+  public get passwordIsStrongError(): string[] {
+    return this.form.get('password')?.errors?.['strongPassword'];
   }
 }

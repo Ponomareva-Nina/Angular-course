@@ -31,6 +31,7 @@ export default class SearchResultsComponent implements OnDestroy, OnInit {
       }
     });
   }
+
   public get searchItems(): Nullable<VideoResponseItem[]> {
     return this.items;
   }

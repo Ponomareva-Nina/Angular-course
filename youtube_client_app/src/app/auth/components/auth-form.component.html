@@ -4,23 +4,21 @@
     login
     <input ngClass="input" type="text" formControlName="username">
   </label>
-  <div class="validation" *ngIf="form.get('username')?.invalid && form.get('username')?.touched">
-    <span  *ngIf="form.get('username')?.errors?.['required']">Please enter a login email</span>
-    <span *ngIf="form.get('username')?.errors?.['email']">The login email is invalid</span>
+  <div class="validation" *ngIf="loginInput?.invalid && loginInput?.touched">
+    <span *ngIf="loginRequiredError">Please enter a login email</span>
+    <span *ngIf="loginEmailError">The login email is invalid</span>
   </div>
 
   <label class="form-label">
     password
     <input ngClass="input" type="password" formControlName="password">
   </label>
-  <div class="validation"  *ngIf="form.get('password')?.invalid && form.get('password')?.touched">
-    <span  *ngIf="form.get('password')?.errors?.['required']">Please enter a password</span>
-    <div *ngIf="!form.get('password')?.errors?.['required'] && form.get('password')?.errors?.['strongPassword']">
+  <div class="validation"  *ngIf="passwordInput?.invalid && passwordInput?.touched">
+    <span *ngIf="passwordRequiredError">Please enter a password</span>
+    <ul *ngIf="!passwordRequiredError && passwordIsStrongError">
       Your password isn't strong enough:
-      <ul>
-        <li *ngFor="let error of form.get('password')?.errors?.['strongPassword']">{{error}}</li>
-      </ul>
-    </div>
+        <li *ngFor="let error of passwordIsStrongError">{{error}}</li>
+    </ul>
   </div>
   <button type="submit" ngClass="btn form-btn" [disabled]="form.invalid">login</button>
 </form>
