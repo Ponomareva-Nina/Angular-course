@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
 import { Nullable } from 'src/app/shared/models/types';
 import { AuthService } from '../../core/services/auth.service';
-import { AuthValidators } from '../password.validators';
+import { PasswordValidators } from '../password.validators';
 
 @Component({
   selector: 'app-auth-form',
@@ -37,7 +37,7 @@ export default class AuthFormComponent implements OnInit {
       ]),
       password: new FormControl<string>('', [
         Validators.required,
-        AuthValidators.strongPassword,
+        PasswordValidators.strongPassword,
       ]),
     });
   }

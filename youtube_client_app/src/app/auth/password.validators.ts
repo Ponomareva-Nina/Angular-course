@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms';
 import { Nullable } from '../shared/models/types';
 
-export class AuthValidators {
+export class PasswordValidators {
   public static strongPassword(
     control: FormControl<string>
   ): Nullable<{ [key: string]: string[] }> {
