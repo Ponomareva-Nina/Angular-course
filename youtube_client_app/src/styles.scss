@@ -110,11 +110,11 @@ button:disabled {
   }
 }
 
-input.ng-invalid.ng-touched {
+.input.ng-invalid.ng-touched {
   border-bottom: 2px solid var(--error-color);
 }
 
-input.ng-valid.ng-touched {
+.input.ng-valid.ng-touched {
   border-bottom: 2px solid var(--success-color);
 }
 
