@@ -33,7 +33,7 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
   }
 
   public get title(): string {
-    return this.searchItemService.getTitle(this.searchItem);
+    return this.searchItemService.getTitle(this.searchItem) || '';
   }
 
   public get thumbnailUrl(): string | null {
@@ -41,7 +41,7 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
   }
 
   public get publishedAt(): string {
-    return this.searchItemService.getPublishedAt(this.searchItem);
+    return this.searchItemService.getPublishedAt(this.searchItem) || '';
   }
 
   public get socialsInfo(): Nullable<StatisticsInterface> {
@@ -49,7 +49,7 @@ export class DetailedCardComponent implements OnInit, OnDestroy {
   }
 
   public get description(): string {
-    return this.searchItemService.getDescription(this.searchItem);
+    return this.searchItemService.getDescription(this.searchItem) || '';
   }
 
   public ngOnDestroy(): void {

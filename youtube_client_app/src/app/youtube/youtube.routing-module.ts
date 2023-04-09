@@ -4,11 +4,10 @@ import { DetailedPageComponent } from './pages/detailed-page/detailed-page.compo
 import { MainPageComponent } from './pages/main-page/main-page.component';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent, canActivate: [] },
+  { path: '', component: MainPageComponent },
   {
     path: ':id',
     component: DetailedPageComponent,
-    canActivate: [],
   },
 ];
 
