@@ -66,6 +66,8 @@ input[type='password'] {
   text-transform: lowercase;
   @include font-main();
   color: var(--font-btn-color);
+  border-radius: .5rem;
+  min-height: 2.4rem;
 
   &:hover {
     background-color: var(--btn-hover-bg);

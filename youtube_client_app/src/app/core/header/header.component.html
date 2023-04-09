@@ -3,8 +3,8 @@
     <div class="search-section">
       <app-search-panel (onSettingsBtnClick)="toggleSearchSettings()"></app-search-panel>
     </div>
-    
     <app-profile class="profile"></app-profile>
+    <button routerLink="admin" class="btn">add+</button>
   </div>
   <app-search-settings-panel *ngIf="isOpenSearchSettings"></app-search-settings-panel>
 </header>
