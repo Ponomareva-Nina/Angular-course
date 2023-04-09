@@ -4,9 +4,21 @@
     login
     <input ngClass="input" type="text" formControlName="username">
   </label>
+  <div class="validation" *ngIf="loginInput?.invalid && loginInput?.touched">
+    <span *ngIf="loginRequiredError">Please enter a login email</span>
+    <span *ngIf="loginEmailError">The login email is invalid</span>
+  </div>
+
   <label class="form-label">
     password
     <input ngClass="input" type="password" formControlName="password">
   </label>
-  <button type="submit" ngClass="btn form-btn">login</button>
+  <div class="validation"  *ngIf="passwordInput?.invalid && passwordInput?.touched">
+    <span *ngIf="passwordRequiredError">Please enter a password</span>
+    <ul *ngIf="!passwordRequiredError && passwordIsStrongError">
+      Your password isn't strong enough:
+        <li *ngFor="let error of passwordIsStrongError">{{error}}</li>
+    </ul>
+  </div>
+  <button type="submit" ngClass="btn form-btn" [disabled]="form.invalid">login</button>
 </form>

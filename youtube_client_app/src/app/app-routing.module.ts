@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
+  ADMIN_PAGE_ROUTE,
   AUTH_PAGE_ROUTE,
   MAIN_PAGE_ROUTE,
 } from 'src/constants/routing-constants';
@@ -22,6 +23,13 @@ const routes: Routes = [
   {
     path: AUTH_PAGE_ROUTE,
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: ADMIN_PAGE_ROUTE,
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: '**',

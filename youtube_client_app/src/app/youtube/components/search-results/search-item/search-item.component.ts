@@ -19,16 +19,16 @@ export default class SearchItemComponent {
     private router: Router
   ) {}
 
-  public get title(): string | null {
+  public get title(): Nullable<string> {
     return this.searchItemService.getTitle(this.searchItem);
   }
 
-  public get smallThumbnailUrl(): string | null {
+  public get smallThumbnailUrl(): Nullable<string> {
     return this.searchItemService.getSmallThumbnailUrl(this.searchItem);
   }
 
   public get publishedAt(): string {
-    return this.searchItemService.getPublishedAt(this.searchItem);
+    return this.searchItemService.getPublishedAt(this.searchItem) || '';
   }
 
   public get socialsInfo(): Nullable<StatisticsInterface> {

@@ -66,6 +66,8 @@ input[type='password'] {
   text-transform: lowercase;
   @include font-main();
   color: var(--font-btn-color);
+  border-radius: .5rem;
+  min-height: 2.4rem;
 
   &:hover {
     background-color: var(--btn-hover-bg);
@@ -94,4 +96,33 @@ input[type='password'] {
   font-size: 2rem;
   color: var(--auxiliary-color);
   font-weight: bold;
+}
+
+button:disabled {
+  color: var(--auxiliary-color);
+  background-color: var(--disabled-bg-color);
+  border: 1px solid var(--auxiliary-color);
+
+  &:hover {
+    pointer-events: none;
+    filter: none;
+    background-color: var(--disabled-bg-color);
+  }
+}
+
+input.ng-invalid.ng-touched {
+  border-bottom: 2px solid var(--error-color);
+}
+
+input.ng-valid.ng-touched {
+  border-bottom: 2px solid var(--success-color);
+}
+
+.validation {
+  color: var(--error-color);
+  font-size: 1rem;
+
+  li {
+    color: var(--auxiliary-color);
+  }
 }

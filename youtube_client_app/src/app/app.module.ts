@@ -8,6 +8,7 @@ import CoreModule from './core/core.module';
 import { YoutubeModule } from './youtube/youtube.module';
 import { Page404Module } from './page404/page404.module';
 import { ApiInterceptor } from './api.interceptor';
+import { AdminModule } from './admin/admin.module';
 
 const HTTP_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -24,6 +25,7 @@ const HTTP_INTERCEPTOR: Provider = {
     CoreModule,
     YoutubeModule,
     Page404Module,
+    AdminModule,
   ],
   providers: [HTTP_INTERCEPTOR],
   bootstrap: [AppComponent],

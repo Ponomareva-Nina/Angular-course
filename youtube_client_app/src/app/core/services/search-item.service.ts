@@ -8,11 +8,11 @@ import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
   providedIn: 'root',
 })
 export class SearchItemService {
-  public getTitle(searchItem: Nullable<VideoResponseItem>): string {
+  public getTitle(searchItem: Nullable<VideoResponseItem>): Nullable<string> {
     if (searchItem) {
       return searchItem.snippet.title;
     }
-    return 'no data';
+    return null;
   }
 
   public getSmallThumbnailUrl(
@@ -41,11 +41,13 @@ export class SearchItemService {
     return null;
   }
 
-  public getPublishedAt(searchItem: Nullable<VideoResponseItem>): string {
+  public getPublishedAt(
+    searchItem: Nullable<VideoResponseItem>
+  ): Nullable<string> {
     if (searchItem) {
       return searchItem.snippet.publishedAt;
     }
-    return 'no data';
+    return null;
   }
 
   public getSocialsInfo(
@@ -57,10 +59,12 @@ export class SearchItemService {
     return null;
   }
 
-  public getDescription(searchItem: Nullable<VideoResponseItem>): string {
+  public getDescription(
+    searchItem: Nullable<VideoResponseItem>
+  ): Nullable<string> {
     if (searchItem) {
       return searchItem.snippet.description;
     }
-    return 'no data';
+    return null;
   }
 }
