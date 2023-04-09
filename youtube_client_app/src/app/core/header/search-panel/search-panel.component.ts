@@ -7,7 +7,13 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { MAIN_PAGE_ROUTE } from 'src/constants/routing-constants';
-import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import {
+  Subscription,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  switchMap,
+} from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 
@@ -18,9 +24,8 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchPanelComponent implements OnDestroy, OnInit {
   @Output() public onSettingsBtnClick: EventEmitter<void> = new EventEmitter();
-  public searchInput = new FormControl('');
+  public searchInput = new FormControl<string>('');
   private subscription!: Subscription;
-  private inputSub!: Subscription;
 
   public constructor(
     protected searchService: SearchService,
@@ -28,24 +33,30 @@ export class SearchPanelComponent implements OnDestroy, OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.inputSub = this.searchInput.valueChanges
-      .pipe(debounceTime(500), distinctUntilChanged())
-      .subscribe(() => this.handleClickOnSearchBtn());
+    this.subscription = this.searchInput.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap((value) => {
+          if (value && value.trim().length) {
+            return this.searchService.fetchResults(value);
+          }
+          return of(null);
+        })
+      )
+      .subscribe((items) => {
+        if (items) {
+          this.navigateToSearchResults();
+          this.searchService.setSearchResults(items);
+        }
+      });
   }
 
   public handleClickOnSettingsBtn(): void {
     this.onSettingsBtnClick.emit();
   }
 
-  public handleClickOnSearchBtn(): void {
-    if (this.searchInput.value?.trim().length) {
-      this.subscription = this.searchService
-        .fetchResults(this.searchInput.value)
-        .subscribe((items) => {
-          this.searchService.setSearchResults(items);
-        });
-    }
-
+  public navigateToSearchResults(): void {
     if (this.router.routerState.snapshot.url.slice(1) !== MAIN_PAGE_ROUTE) {
       this.router.navigate([MAIN_PAGE_ROUTE]);
     }
@@ -53,6 +64,5 @@ export class SearchPanelComponent implements OnDestroy, OnInit {
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.inputSub.unsubscribe();
   }
 }
