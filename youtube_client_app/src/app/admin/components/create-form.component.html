@@ -41,7 +41,8 @@
     <input ngClass="input" type="date" formControlName="date">
   </label>
   <div class="validation" *ngIf="dateInput.invalid && dateInput.touched">
-    <span *ngIf="linkInput.errors?.['required']">Please enter a creation date</span>
+    <span *ngIf="dateInput.errors?.['required']">Please enter a creation date</span>
+    <span *ngIf="!dateInput.errors?.['required'] && dateInput.errors?.['isValidDate']">Date cannot be in future</span>
   </div>
 
   <button type="submit" ngClass="btn form-btn" [disabled]="form.invalid">Create card</button>

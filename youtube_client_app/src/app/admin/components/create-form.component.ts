@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UrlValidators } from '../url.validators';
+import { DateValidators } from '../date.validators';
 
 @Component({
   selector: 'app-create-form',
@@ -29,7 +30,10 @@ export class CreateFormComponent implements OnInit {
         Validators.required,
         UrlValidators.isUrl,
       ]),
-      date: new FormControl<string>('', [Validators.required]),
+      date: new FormControl<string>('', [
+        Validators.required,
+        DateValidators.isValidDate,
+      ]),
     });
   }
 
