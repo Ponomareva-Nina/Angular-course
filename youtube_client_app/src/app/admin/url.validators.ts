@@ -8,7 +8,7 @@ export class UrlValidators {
     const url =
       // eslint-disable-next-line no-useless-escape
       /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-    if (!control.value.match(url)) {
+    if (control.value && !control.value.match(url)) {
       return { isUrl: true };
     }
     return null;
