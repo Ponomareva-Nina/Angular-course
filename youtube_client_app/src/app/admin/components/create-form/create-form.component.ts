@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UrlValidators } from '../url.validators';
-import { DateValidators } from '../date.validators';
+import { Store } from '@ngrx/store';
+import { addCard } from 'src/app/redux/actions/admin.actions';
+import { VideoItem } from 'src/app/shared/models/admin-video-item';
+import { DateValidators } from '../../date.validators';
+import { UrlValidators } from '../../url.validators';
 
 @Component({
   selector: 'app-create-form',
@@ -14,7 +17,7 @@ export class CreateFormComponent implements OnInit {
   @Input() isOpen!: boolean;
   @Output() onClose: EventEmitter<void> = new EventEmitter();
 
-  public constructor(private router: Router) {}
+  public constructor(private router: Router, private store: Store) {}
 
   public ngOnInit(): void {
     this.form = new FormGroup({
@@ -44,6 +47,15 @@ export class CreateFormComponent implements OnInit {
   }
 
   public createCard(): void {
+    const card: VideoItem = {
+      title: this.form.get('title')?.value,
+      description: this.form.get('description')?.value,
+      imgLink: this.form.get('img')?.value,
+      videoLink: this.form.get('link')?.value,
+      publishedAt: this.form.get('date')?.value
+    }
+
+    this.store.dispatch(addCard({ item: card }));
     this.form.reset();
     this.onClose.emit();
   }

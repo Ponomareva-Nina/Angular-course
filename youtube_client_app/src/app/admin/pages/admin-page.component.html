@@ -1,7 +1,8 @@
 <button class="btn add-btn" (click)="openForm()">Add your video</button>
 <app-create-form [isOpen]="isformOpen" (onClose)="closeForm()"></app-create-form>
+<h2 class="title">Your videos</h2>
+<span *ngIf="!adminCards.length" class="info-message admin-info-message">You haven't created video yet</span>
 <section class="videos">
-  <h2 class="title">Your videos</h2>
-  <span class="info-message admin-info-message">You haven't created video yet</span>
+  <app-admin-card *ngFor="let card of adminCards" [cardData]="card"></app-admin-card>
 </section>
 
