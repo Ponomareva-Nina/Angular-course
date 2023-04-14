@@ -13,23 +13,15 @@ import { Subscription, map } from 'rxjs';
   templateUrl: './create-form.component.html',
   styleUrls: ['./create-form.component.scss'],
 })
-export class CreateFormComponent implements OnInit, OnDestroy {
+export class CreateFormComponent implements OnInit {
   public form!: FormGroup;
   @Input() isOpen!: boolean;
   @Output() onClose: EventEmitter<void> = new EventEmitter();
-  private sub!: Subscription;
-  private currentId!: number;
+  private currentId = 0;
 
   public constructor(private store: Store) {}
 
   public ngOnInit(): void {
-    this.sub = this.store.select(AdminCardsSelector).pipe(
-      map(items => items.length))
-      .subscribe((id) => {
-        this.currentId = id
-      }
-    )
-
     this.form = new FormGroup({
       title: new FormControl<string>('', [
         Validators.required,
@@ -65,8 +57,8 @@ export class CreateFormComponent implements OnInit, OnDestroy {
       videoLink: this.form.get('link')?.value,
       publishedAt: this.form.get('date')?.value
     }
-        
     this.store.dispatch(addCard({ item: card }));
+    this.currentId = this.currentId + 1;
     this.form.reset();
     this.onClose.emit();
   }
@@ -90,9 +82,4 @@ export class CreateFormComponent implements OnInit, OnDestroy {
   public get dateInput(): FormControl<string> {
     return this.form.get('date') as FormControl;
   }
-
-  public ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
-
 }
