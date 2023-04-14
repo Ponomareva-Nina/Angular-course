@@ -90,7 +90,8 @@ input[type='password'] {
   color: var(--auxiliary-color);
 }
 
-.http-err-message {
+.http-err-message,
+.info-message {
   padding: 0 3rem;
   text-align: center;
   font-size: 2rem;

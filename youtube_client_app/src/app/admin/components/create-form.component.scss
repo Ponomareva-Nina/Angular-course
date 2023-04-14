@@ -1,10 +1,46 @@
-:host {
+.form {
   background-color: var(--forms-popup-bg-color);
   padding: 3rem 2rem;
   border-radius: .5rem;
-  display: flex;
   flex-direction: column;
   gap: 1rem;
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: -1rem;
+  left: calc(50% - 15rem);
+
+  &.open {
+    display: flex;
+  }
+}
+
+.close-btn {
+  align-self: flex-end;
+  width: 1.8rem;
+  height: 1.8rem;
+  --weight: 1px;
+  border-radius: 3px;
+  background:
+    linear-gradient(45deg, transparent calc(50% - var(--weight)), var(--auxiliary-color) calc(50% - var(--weight)), var(--auxiliary-color) calc(50% + var(--weight)), transparent calc(50% + var(--weight))),
+    linear-gradient(-45deg, transparent calc(50% - var(--weight)), var(--auxiliary-color) calc(50% - var(--weight)), var(--auxiliary-color) calc(50% + var(--weight)), transparent calc(50% + var(--weight)));
+
+    &:hover {
+      background:
+      linear-gradient(45deg, transparent calc(50% - var(--weight)), var(--btn-hover-bg) calc(50% - var(--weight)), var(--btn-hover-bg) calc(50% + var(--weight)), transparent calc(50% + var(--weight))),
+      linear-gradient(-45deg, transparent calc(50% - var(--weight)), var(--btn-hover-bg) calc(50% - var(--weight)), var(--btn-hover-bg) calc(50% + var(--weight)), transparent calc(50% + var(--weight)));
+    }
+
+  }
+
+.overlay {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .input {

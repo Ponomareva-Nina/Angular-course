@@ -1,7 +1,15 @@
 :host {
   display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.admin {
+  display: flex;
   gap: .8rem;
   align-items: center;
+  text-decoration: none;
+  color: var(--font-main-color);
   
   &:hover {
     cursor: pointer;
@@ -15,7 +23,6 @@
 }
 
 .userame {
-  text-transform: capitalize;
   text-align: end;
 }
 

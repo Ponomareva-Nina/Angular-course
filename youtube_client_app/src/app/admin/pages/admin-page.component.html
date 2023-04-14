@@ -1,1 +1,7 @@
-<app-create-form></app-create-form>
+<button class="btn add-btn" (click)="openForm()">Add your video</button>
+<app-create-form [isOpen]="isformOpen" (onClose)="closeForm()"></app-create-form>
+<section class="videos">
+  <h2 class="title">Your videos</h2>
+  <span class="info-message admin-info-message">You haven't created video yet</span>
+</section>
+

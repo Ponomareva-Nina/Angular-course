@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UrlValidators } from '../url.validators';
@@ -11,6 +11,8 @@ import { DateValidators } from '../date.validators';
 })
 export class CreateFormComponent implements OnInit {
   public form!: FormGroup;
+  @Input() isOpen!: boolean;
+  @Output() onClose: EventEmitter<void> = new EventEmitter();
 
   public constructor(private router: Router) {}
 
@@ -37,8 +39,13 @@ export class CreateFormComponent implements OnInit {
     });
   }
 
+  public closePopup(): void {
+    this.onClose.emit();
+  }
+
   public createCard(): void {
     this.form.reset();
+    this.onClose.emit();
   }
 
   public get titleInput(): FormControl<string> {
