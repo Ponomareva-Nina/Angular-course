@@ -19,16 +19,16 @@ export interface LocalizationInterface {
 
 export interface SnippetInterface {
   publishedAt: string;
-  channelId: string;
+  channelId?: string;
   title: string;
   description: string;
   thumbnails: ThumbnailsInterface;
-  channelTitle: string;
-  tags: Array<string>;
-  categoryId: string;
-  liveBroadcastContent: string;
-  localized: LocalizationInterface;
-  defaultAudioLanguage: string;
+  channelTitle?: string;
+  tags?: Array<string>;
+  categoryId?: string;
+  liveBroadcastContent?: string;
+  localized?: LocalizationInterface;
+  defaultAudioLanguage?: string;
 }
 
 export interface StatisticsInterface {

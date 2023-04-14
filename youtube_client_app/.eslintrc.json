@@ -9,7 +9,9 @@
         "*.ts"
       ],
       "parserOptions": {
-        "project": ["tsconfig.(app|spec).json"]
+        "project": [
+          "tsconfig.(app|spec).json"
+        ]
       },
       "extends": [
         "eslint:recommended",
@@ -20,7 +22,9 @@
         "airbnb-typescript/base",
         "prettier"
       ],
-      "plugins": ["prettier"],
+      "plugins": [
+        "prettier"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -38,12 +42,24 @@
             "style": "kebab-case"
           }
         ],
-        "prettier/prettier": ["error"],
-        "@typescript-eslint/explicit-member-accessibility": ["warn"],
-        "@typescript-eslint/explicit-function-return-type": ["warn"],
-        "import/prefer-default-export": ["off"],
-        "@typescript-eslint/lines-between-class-members": ["off"],
-        "@angular-eslint/no-output-on-prefix": ["off"]
+        "prettier/prettier": [
+          "error"
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn"
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "warn"
+        ],
+        "import/prefer-default-export": [
+          "off"
+        ],
+        "@typescript-eslint/lines-between-class-members": [
+          "off"
+        ],
+        "@angular-eslint/no-output-on-prefix": [
+          "off"
+        ]
       }
     },
     {
@@ -56,6 +72,14 @@
       "rules": {
         "@angular-eslint/template/accessibility-alt-text": "error"
       }
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }
