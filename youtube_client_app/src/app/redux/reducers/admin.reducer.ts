@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { addCard } from "../actions/admin.actions";
+import { addCard, deleteCard } from "../actions/admin.actions";
 import { VideoItem } from "src/app/shared/models/admin-video-item";
 
 export interface AdminState {
@@ -16,5 +16,9 @@ export const AdminReducer = createReducer(
     ...state,
     items: [...state.items, item]
   })
-  )
+  ),
+  on(deleteCard, (state, {id}) => ({
+    ...state,
+    items: [...state.items].filter((item) => item.id !== id)
+  }))
 );

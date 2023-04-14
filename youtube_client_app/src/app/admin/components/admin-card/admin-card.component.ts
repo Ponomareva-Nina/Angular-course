@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { State } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { deleteCard } from 'src/app/redux/actions/admin.actions';
 import { VideoItem } from 'src/app/shared/models/admin-video-item';
 
 @Component({
@@ -8,6 +9,10 @@ import { VideoItem } from 'src/app/shared/models/admin-video-item';
   styleUrls: ['./admin-card.component.scss']
 })
 export class AdminCardComponent {
-  public constructor(private state: State<any>) {}
+  public constructor(private store: Store) {}
   @Input() cardData!: VideoItem;
+
+  public deleteCardItem() {
+    this.store.dispatch(deleteCard({id: this.cardData.id}))
+  }
 }
