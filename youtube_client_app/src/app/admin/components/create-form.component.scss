@@ -9,6 +9,7 @@
   z-index: 2;
   top: -1rem;
   left: calc(50% - 15rem);
+  max-width: 100%;
 
   &.open {
     display: flex;
