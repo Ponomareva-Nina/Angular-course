@@ -1,12 +1,10 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { addCard } from 'src/app/redux/actions/admin.actions';
 import { VideoItem } from 'src/app/shared/models/admin-video-item';
 import { DateValidators } from '../../date.validators';
 import { UrlValidators } from '../../url.validators';
-import { AdminCardsSelector } from 'src/app/redux/selectors/admin.selectors';
-import { Subscription, map } from 'rxjs';
 
 @Component({
   selector: 'app-create-form',
@@ -48,17 +46,17 @@ export class CreateFormComponent implements OnInit {
     this.onClose.emit();
   }
 
-  public createCard(): void {      
+  public createCard(): void {
     const card: VideoItem = {
       id: this.currentId,
       title: this.form.get('title')?.value,
       description: this.form.get('description')?.value,
       imgLink: this.form.get('img')?.value,
       videoLink: this.form.get('link')?.value,
-      publishedAt: this.form.get('date')?.value
-    }
+      publishedAt: this.form.get('date')?.value,
+    };
     this.store.dispatch(addCard({ item: card }));
-    this.currentId = this.currentId + 1;
+    this.currentId += 1;
     this.form.reset();
     this.onClose.emit();
   }

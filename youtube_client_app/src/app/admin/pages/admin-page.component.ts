@@ -16,7 +16,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   public isformOpen = false;
   public adminCards: VideoItem[] = [];
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.sub = this.store.select(AdminCardsSelector).subscribe((cards) => {
       this.adminCards = cards;
     });
@@ -25,7 +25,7 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   public openForm(): void {
     if (!this.isformOpen) {
       this.isformOpen = true;
-    }    
+    }
   }
 
   public closeForm(): void {

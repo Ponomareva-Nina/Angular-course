@@ -23,8 +23,7 @@ const HTTP_INTERCEPTOR: Provider = {
 @NgModule({
   declarations: [AppComponent],
   imports: [
-
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     AuthModule,
     CoreModule,

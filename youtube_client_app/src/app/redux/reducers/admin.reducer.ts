@@ -1,24 +1,26 @@
-import { createReducer, on } from "@ngrx/store";
-import { addCard, deleteCard } from "../actions/admin.actions";
-import { VideoItem } from "src/app/shared/models/admin-video-item";
+import { createReducer, on } from '@ngrx/store';
+import { VideoItem } from 'src/app/shared/models/admin-video-item';
+import { addCard, deleteCard } from '../actions/admin.actions';
 
 export interface AdminState {
-  items: Array<VideoItem>
+  items: Array<VideoItem>;
 }
 
 const InitialState: AdminState = {
-  items: []
-}
+  items: [],
+};
 
 export const AdminReducer = createReducer(
   InitialState,
-  on(addCard, (state, {item}) => ({
-    ...state,
-    items: [...state.items, item]
-  })
+  on(
+    addCard,
+    (state, { item }): AdminState => ({
+      ...state,
+      items: [...state.items, item],
+    })
   ),
-  on(deleteCard, (state, {id}) => ({
+  on(deleteCard, (state, { id }) => ({
     ...state,
-    items: [...state.items].filter((item) => item.id !== id)
+    items: [...state.items].filter((item) => item.id !== id),
   }))
 );
