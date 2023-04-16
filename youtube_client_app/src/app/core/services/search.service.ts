@@ -10,15 +10,15 @@ import { SortOptions } from 'src/constants/sort-options';
   providedIn: 'root',
 })
 export class SearchService {
-  private searchResults = new BehaviorSubject<VideoResponseItem[] | string>([]);
+  // private searchResults = new BehaviorSubject<VideoResponseItem[] | string>([]);
 
   public constructor(protected apiService: ApiService) {}
   private currentSortOption: SortOptions = SortOptions.VIEWS_DESC;
   private currentByKeywordFilter = '';
 
-  public get searchResults$(): Observable<VideoResponseItem[] | string> {
-    return this.searchResults.asObservable();
-  }
+  // public get searchResults$(): Observable<VideoResponseItem[] | string> {
+  //   return this.searchResults.asObservable();
+  // }
 
   public fetchResults(
     keyword: string
@@ -49,9 +49,9 @@ export class SearchService {
     );
   }
 
-  public setSearchResults(items: VideoResponseItem[] | string): void {
-    this.searchResults.next(items);
-  }
+  // public setSearchResults(items: VideoResponseItem[] | string): void {
+  //   this.searchResults.next(items);
+  // }
 
   public get currentFilter(): string {
     return this.currentByKeywordFilter;

@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { ApiService } from 'src/app/core/services/api.service';
 import { SearchService } from 'src/app/core/services/search.service';
+import { YoutubeItemsSelector } from 'src/app/redux/selectors/youtube.selectors';
 import { Nullable } from 'src/app/shared/models/types';
 import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
 
@@ -17,11 +18,11 @@ export default class SearchResultsComponent implements OnDestroy, OnInit {
 
   public constructor(
     protected searchService: SearchService,
-    protected apiService: ApiService
+    private store: Store,
   ) {}
 
   public ngOnInit(): void {
-    this.sub = this.searchService.searchResults$.subscribe((searchResult) => {
+    this.sub = this.store.select(YoutubeItemsSelector).subscribe((searchResult) => {
       if (typeof searchResult === 'string') {
         this.errorMessage = searchResult;
         this.items = null;

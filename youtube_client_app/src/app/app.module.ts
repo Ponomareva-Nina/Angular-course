@@ -13,6 +13,7 @@ import { Page404Module } from './page404/page404.module';
 import { ApiInterceptor } from './api.interceptor';
 import { AdminModule } from './admin/admin.module';
 import { reducers } from './redux/state.model';
+import { ApiEffects } from './redux/effects/youtube.effects';
 
 const HTTP_INTERCEPTOR: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -31,7 +32,7 @@ const HTTP_INTERCEPTOR: Provider = {
     Page404Module,
     AdminModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([ApiEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [HTTP_INTERCEPTOR],
