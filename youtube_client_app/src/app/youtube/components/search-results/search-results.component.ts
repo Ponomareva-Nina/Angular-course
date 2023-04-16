@@ -44,4 +44,9 @@ export default class SearchResultsComponent implements OnDestroy, OnInit {
       this.sub.unsubscribe();
     }
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  public trackById(item: VideoResponseItem): string {
+    return item.id;
+  }
 }
