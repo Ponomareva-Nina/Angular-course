@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
 import { VideoResponseItem } from 'src/app/shared/models/video-response.model';
 import { HttpErrorMessages } from 'src/constants/api-constants';
@@ -10,15 +10,9 @@ import { SortOptions } from 'src/constants/sort-options';
   providedIn: 'root',
 })
 export class SearchService {
-  // private searchResults = new BehaviorSubject<VideoResponseItem[] | string>([]);
-
   public constructor(protected apiService: ApiService) {}
   private currentSortOption: SortOptions = SortOptions.VIEWS_DESC;
   private currentByKeywordFilter = '';
-
-  // public get searchResults$(): Observable<VideoResponseItem[] | string> {
-  //   return this.searchResults.asObservable();
-  // }
 
   public fetchResults(
     keyword: string
@@ -48,10 +42,6 @@ export class SearchService {
       })
     );
   }
-
-  // public setSearchResults(items: VideoResponseItem[] | string): void {
-  //   this.searchResults.next(items);
-  // }
 
   public get currentFilter(): string {
     return this.currentByKeywordFilter;

@@ -12,7 +12,7 @@ export class FilterPipe implements PipeTransform {
     keyword: string
   ): Nullable<VideoResponseItem[]> {
     if (keyword.trim() && items) {
-      return items.filter((item) =>
+      return [...items].filter((item) =>
         item.snippet.title.toLowerCase().includes(keyword.toLowerCase())
       );
     }

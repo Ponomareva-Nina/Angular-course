@@ -18,19 +18,21 @@ export default class SearchResultsComponent implements OnDestroy, OnInit {
 
   public constructor(
     protected searchService: SearchService,
-    private store: Store,
+    private store: Store
   ) {}
 
   public ngOnInit(): void {
-    this.sub = this.store.select(YoutubeItemsSelector).subscribe((searchResult) => {
-      if (typeof searchResult === 'string') {
-        this.errorMessage = searchResult;
-        this.items = null;
-      } else {
-        this.errorMessage = null;
-        this.items = searchResult;
-      }
-    });
+    this.sub = this.store
+      .select(YoutubeItemsSelector)
+      .subscribe((searchResult) => {
+        if (typeof searchResult === 'string') {
+          this.errorMessage = searchResult;
+          this.items = null;
+        } else {
+          this.errorMessage = null;
+          this.items = searchResult;
+        }
+      });
   }
 
   public get searchItems(): Nullable<VideoResponseItem[]> {
