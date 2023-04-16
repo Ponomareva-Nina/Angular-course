@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, async } from 'rxjs';
 import { AdminCardsSelector } from 'src/app/redux/selectors/admin.selectors';
 import { VideoItem } from 'src/app/shared/models/admin-video-item';
 
@@ -9,18 +9,10 @@ import { VideoItem } from 'src/app/shared/models/admin-video-item';
   templateUrl: './admin-page.component.html',
   styleUrls: ['./admin-page.component.scss'],
 })
-export class AdminPageComponent implements OnInit, OnDestroy {
+export class AdminPageComponent {
   public constructor(private store: Store) {}
-
-  private sub!: Subscription;
   public isformOpen = false;
-  public adminCards: VideoItem[] = [];
-
-  public ngOnInit(): void {
-    this.sub = this.store.select(AdminCardsSelector).subscribe((cards) => {
-      this.adminCards = cards;
-    });
-  }
+  public adminCards$: Observable<VideoItem[]> = this.store.select(AdminCardsSelector);
 
   public openForm(): void {
     if (!this.isformOpen) {
@@ -32,7 +24,4 @@ export class AdminPageComponent implements OnInit, OnDestroy {
     this.isformOpen = false;
   }
 
-  ngOnDestroy(): void {
-    this.sub.unsubscribe();
-  }
 }
