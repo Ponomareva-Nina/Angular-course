@@ -26,7 +26,8 @@ export class AdminPageComponent {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  public trackById(item: VideoItem): string {
-    return item.id.toString();
+  public trackById(item: unknown): string {
+    const adminItem = item as VideoItem;
+    return `${adminItem.id}`;
   }
 }

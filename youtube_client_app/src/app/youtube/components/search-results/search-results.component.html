@@ -8,7 +8,7 @@
         *ngFor="let item of searchItems 
         | sort:searchService.currentSort
         | filter:searchService.currentFilter;
-        trackById"
+        trackBy: trackById"
         [searchItem]="item">
       </app-search-item>
   </section>
