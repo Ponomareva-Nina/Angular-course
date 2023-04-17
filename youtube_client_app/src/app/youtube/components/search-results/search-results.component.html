@@ -5,9 +5,10 @@
 <ng-template #searchList>
   <section *ngIf="searchItems; else error" ngClass="search-result">
       <app-search-item 
-        *ngFor="let item of searchItems
+        *ngFor="let item of searchItems 
         | sort:searchService.currentSort
-        | filter:searchService.currentFilter"
+        | filter:searchService.currentFilter;
+        trackBy: trackById"
         [searchItem]="item">
       </app-search-item>
   </section>

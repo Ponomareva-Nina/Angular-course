@@ -1,0 +1,56 @@
+<div [ngClass]="{
+  'form': true,
+  'open': isOpen
+}">
+  <button class="close-btn" (click)="closePopup()"></button>
+  <h2 class="title">Сreate new card</h2>
+  <form class="form-layout" [formGroup]="form" (ngSubmit)="createCard()">
+    <label class="form-label">
+      Title
+      <input ngClass="input" type="text" formControlName="title">
+    </label>
+    <div class="validation" *ngIf="titleInput.invalid && titleInput.touched">
+      <span *ngIf="titleInput.errors?.['required']">Please enter a title</span>
+      <span *ngIf="titleInput.errors?.['minlength']">The title is too short</span>
+      <span *ngIf="titleInput.errors?.['maxlength']">The title is too long</span>
+    </div>
+
+    <label class="form-label">
+      Description
+      <input ngClass="input" type="text" formControlName="description">
+    </label>
+    <div class="validation" *ngIf="descriptionInput.invalid && descriptionInput.touched">
+      <span *ngIf="descriptionInput.errors?.['maxlength']">The description is too long</span>
+    </div>
+
+    <label class="form-label">
+      Thumbnail
+      <input ngClass="input" type="text" formControlName="img">
+    </label>
+    <div class="validation" *ngIf="imgInput.invalid && imgInput.touched">
+      <span *ngIf="imgInput.errors?.['required']">Please enter a link to the image</span>
+      <span *ngIf="!imgInput.errors?.['required'] && imgInput.errors?.['isUrl']">The image link is invalid</span>
+    </div>
+
+    <label class="form-label">
+      Link to the video
+      <input ngClass="input" type="text" formControlName="link">
+    </label>
+    <div class="validation" *ngIf="linkInput.invalid && linkInput.touched">
+      <span *ngIf="linkInput.errors?.['required']">Please enter a link to the video</span>
+      <span *ngIf="!linkInput.errors?.['required'] && linkInput.errors?.['isUrl']">The video link is invalid</span>
+    </div>
+
+    <label class="form-label">
+      Creation date
+      <input ngClass="input" type="date" formControlName="date">
+    </label>
+    <div class="validation" *ngIf="dateInput.invalid && dateInput.touched">
+      <span *ngIf="dateInput.errors?.['required']">Please enter a creation date</span>
+      <span *ngIf="!dateInput.errors?.['required'] && dateInput.errors?.['isValidDate']">Date cannot be in future</span>
+    </div>
+
+    <button type="submit" ngClass="btn form-btn" [disabled]="form.invalid">Create card</button>
+  </form>
+</div>
+<span class="overlay" *ngIf="isOpen" (click)="closePopup()"></span>

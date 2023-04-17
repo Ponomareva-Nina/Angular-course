@@ -1,1 +1,10 @@
-<app-create-form></app-create-form>
+<button class="btn add-btn" (click)="openForm()">Add your video</button>
+<app-create-form [isOpen]="isformOpen" (onClose)="closeForm()"></app-create-form>
+<h2 class="title">Your videos</h2>
+<ng-container *ngIf="adminCards$ | async as adminCadsArr">
+  <span *ngIf="!adminCadsArr.length" class="info-message admin-info-message">You haven't created video yet</span>
+  <section class="videos">
+    <app-admin-card *ngFor="let card of adminCadsArr; trackBy: trackById" [cardData]="card">
+    </app-admin-card>
+  </section>
+</ng-container>

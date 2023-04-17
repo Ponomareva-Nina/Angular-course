@@ -31,7 +31,7 @@ export class SortPipe implements PipeTransform {
   }
 
   private sortByDate(items: VideoResponseItem[]): VideoResponseItem[] {
-    return items.sort(
+    return [...items].sort(
       (prev, next) =>
         new Date(next.snippet.publishedAt).getTime() -
         new Date(prev.snippet.publishedAt).getTime()
@@ -39,7 +39,7 @@ export class SortPipe implements PipeTransform {
   }
 
   private sortByViews(items: VideoResponseItem[]): VideoResponseItem[] {
-    return items.sort(
+    return [...items].sort(
       (prev, next) =>
         Number(next.statistics.viewCount) - Number(prev.statistics.viewCount)
     );

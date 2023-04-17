@@ -1,0 +1,34 @@
+:host {
+  max-width: 120rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  min-height: 80vh;
+  padding-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.add-btn {
+  min-height: 3rem;
+  min-width: 10rem;
+  font-size: 1.6rem;
+  align-self: center;
+}
+
+.videos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.admin-info-message {
+  align-self: flex-start;
+  padding: 0;
+}

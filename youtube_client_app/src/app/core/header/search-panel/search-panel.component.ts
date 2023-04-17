@@ -16,6 +16,8 @@ import {
 } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
+import { Store } from '@ngrx/store';
+import { loadItems } from 'src/app/redux/actions/youtube.actions';
 
 @Component({
   selector: 'app-search-panel',
@@ -29,7 +31,8 @@ export class SearchPanelComponent implements OnDestroy, OnInit {
 
   public constructor(
     protected searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private store: Store,
   ) {}
 
   public ngOnInit(): void {
@@ -39,17 +42,13 @@ export class SearchPanelComponent implements OnDestroy, OnInit {
         distinctUntilChanged(),
         switchMap((value) => {
           if (value && value.trim().length) {
-            return this.searchService.fetchResults(value);
+            this.store.dispatch(loadItems({keyword: value}));
+            this.navigateToSearchResults();
           }
           return of(null);
         })
       )
-      .subscribe((items) => {
-        if (items) {
-          this.navigateToSearchResults();
-          this.searchService.setSearchResults(items);
-        }
-      });
+      .subscribe();
   }
 
   public handleClickOnSettingsBtn(): void {
